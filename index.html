@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arthur Rabello — Backend Developer & Applied Mathematician</title>
+  <meta name="description" content="Backend developer and applied mathematician. I build things that require thinking, not just typing." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─────────────────────────────────────────────
+       TOKENS
+    ───────────────────────────────────────────── */
+    :root {
+      --bg:        #0d0d0b;
+      --bg2:       #131310;
+      --bg3:       #1a1a16;
+      --border:    rgba(255,255,255,0.07);
+      --text:      #e8e4d8;
+      --text-dim:  #8a8778;
+      --text-faint:#4a4940;
+      --gold:      #c9a84c;
+      --gold-dim:  #7a6330;
+      --gold-glow: rgba(201,168,76,0.12);
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-mono:    'IBM Plex Mono', 'Courier New', monospace;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+
+      --radius: 4px;
+      --ease:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* ─────────────────────────────────────────────
+       RESET & BASE
+    ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Mathematical grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ─────────────────────────────────────────────
+       LAYOUT
+    ───────────────────────────────────────────── */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    section { padding: 6rem 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    /* ─────────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 13, 11, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      transition: color 0.2s var(--ease);
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ─────────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      padding-top: 6rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4rem;
+      align-items: end;
+      width: 100%;
+    }
+
+    .hero-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h1.hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 300;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    h1.hero-name em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--text-dim);
+      max-width: 480px;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.5rem;
+      border: 1px solid;
+      border-radius: var(--radius);
+      transition: all 0.2s var(--ease);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--bg);
+      border-color: var(--gold);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--gold);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-dim);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--text-dim);
+      color: var(--text);
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: flex-end;
+    }
+
+    .stat {
+      text-align: right;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-top: 0.25rem;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 1;
+    }
+
+    .hero-scroll span {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold-dim), transparent);
+      animation: scrollpulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollpulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+
+    /* ─────────────────────────────────────────────
+       SECTION HEADERS
+    ───────────────────────────────────────────── */
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h2.section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 3rem;
+    }
+
+    /* ─────────────────────────────────────────────
+       ABOUT
+    ───────────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--text-dim);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-text p strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .about-text p:first-of-type {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--text);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .about-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .fact-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .fact-card-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 0.75rem;
+    }
+
+    .fact-card-value {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .lang-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .lang-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+    }
+
+    .lang-name { color: var(--text); }
+    .lang-level {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ─────────────────────────────────────────────
+       PROJECTS
+    ───────────────────────────────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: border-color 0.25s var(--ease), background 0.25s var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+      opacity: 0;
+      transition: opacity 0.3s var(--ease);
+    }
+
+    .project-card:hover {
+      border-color: var(--gold-dim);
+      background: var(--bg3);
+    }
+
+    .project-card:hover::before { opacity: 1; }
+
+    .project-card.featured {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 2rem;
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .project-lang {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--gold-glow);
+      padding: 0.25rem 0.6rem;
+      border-radius: 99px;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .project-link {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: color 0.2s var(--ease), text-shadow 0.2s var(--ease);
+    }
+
+    .project-link:hover {
+      color: var(--text);
+      text-shadow: 0 0 12px var(--gold);
+    }
+
+    .project-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-card p {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius);
+    }
+
+    /* ─────────────────────────────────────────────
+       SKILLS / STACK
+    ───────────────────────────────────────────── */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .stack-group h4 {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stack-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .stack-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+    }
+
+    .stack-item::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--gold-dim);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ─────────────────────────────────────────────
+       EXPERIENCE TIMELINE
+    ───────────────────────────────────────────── */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 5px; top: 8px; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--gold-dim), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-desc a, .project-card p a {
+      color: var(--gold);
+      border-bottom: 1px solid var(--gold-dim);
+      transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+    }
+
+    .timeline-desc a:hover {
+      color: var(--text);
+      border-bottom-color: var(--text);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2rem;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid var(--gold-dim);
+      background: var(--bg);
+    }
+
+    .timeline-dot.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      box-shadow: 0 0 12px var(--gold-glow);
+    }
+
+    .timeline-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.25rem;
+      flex-wrap: wrap;
+    }
+
+    .timeline-role {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .timeline-period {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-faint);
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .timeline-company {
+      font-size: 0.85rem;
+      color: var(--gold-dim);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.65;
+    }
+
+    /* ─────────────────────────────────────────────
+       CONTACT
+    ───────────────────────────────────────────── */
+    #contact {
+      text-align: center;
+    }
+
+    .contact-inner {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .contact-inner .section-label {
+      justify-content: center;
+    }
+
+    .contact-inner .section-label::before { display: none; }
+
+    .contact-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 1.25rem 1.75rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: all 0.2s var(--ease);
+      background: var(--bg2);
+      min-width: 120px;
+    }
+
+    .contact-link:hover {
+      border-color: var(--gold-dim);
+      background: var(--bg3);
+    }
+
+    .contact-link-icon {
+      font-size: 1.2rem;
+    }
+
+    .contact-link-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+
+    .contact-link-value {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+    }
+
+    /* ─────────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--text-faint);
+    }
+
+    .footer-made {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-faint);
+    }
+
+    /* ─────────────────────────────────────────────
+       ANIMATIONS
+    ───────────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* stagger children */
+    .stagger > * {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+    }
+
+    .stagger.visible > *:nth-child(1) { opacity:1; transform:translateY(0); transition-delay: 0s; }
+    .stagger.visible > *:nth-child(2) { opacity:1; transform:translateY(0); transition-delay: 0.08s; }
+    .stagger.visible > *:nth-child(3) { opacity:1; transform:translateY(0); transition-delay: 0.16s; }
+    .stagger.visible > *:nth-child(4) { opacity:1; transform:translateY(0); transition-delay: 0.24s; }
+    .stagger.visible > *:nth-child(5) { opacity:1; transform:translateY(0); transition-delay: 0.32s; }
+    .stagger.visible > *:nth-child(6) { opacity:1; transform:translateY(0); transition-delay: 0.40s; }
+
+    /* ─────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem; }
+      .nav-links { gap: 1.25rem; }
+
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-stats { flex-direction: row; align-items: center; justify-content: flex-start; }
+      .stat { text-align: left; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+      .stack-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links { display: none; }
+      .stack-grid { grid-template-columns: 1fr; }
+      h1.hero-name { font-size: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ──────────────────────────────────────────
+       NAV
+  ─────────────────────────────────────────── -->
+  <nav>
+    <span class="nav-logo">arthurabello</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ──────────────────────────────────────────
+       HERO
+  ─────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <p class="hero-tag">Backend Developer · Applied Mathematician</p>
+          <h1 class="hero-name">Arthur<br /><em>Rabello</em></h1>
+          <p class="hero-tagline">
+            I build things that require thinking, not just typing.<br />
+            Based in Brazil. Working for the world.
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">See my work</a>
+            <a href="mailto:rabello.arthur.oliveira@gmail.com" class="btn btn-secondary">Get in touch</a>
+          </div>
+        </div>
+        <div class="hero-stats stagger">
+          <div class="stat">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Languages spoken</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Science olympiad medals</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Curiosity</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────────────
+       ABOUT
+  ─────────────────────────────────────────── -->
+  <section id="about">
+    <div class="container">
+      <p class="section-label fade-up">About</p>
+      <div class="about-grid">
+        <div class="about-text fade-up">
+          <p>
+            I grew up between more than 15 countries, absorbing mathematics the way other kids absorb football.
+            My father is a mathematician. Abstraction was never scary — it was just dinner conversation.
+          </p>
+          <p>
+            Before finishing high school, I was already a <strong>research collaborator at the Statistics and Data Science Lab (LED–UFAL)</strong>,
+            auditing undergraduate math courses, and competing in national olympiads. Not because I had to —
+            because I found it genuinely enjoyable 
+          </p>
+          <p>
+            Today I study <strong>Applied Mathematics at FGV/EMAp</strong> (full scholarship), 
+            where the curriculum forces you to actually understand things: not just implement gradient descent, 
+            but derive it. I implement algorithms from scratch in C and C++. I know what a B-tree is 
+            and I've benchmarked one.
+          </p>
+          <p>
+            I want to work with teams that care about correctness, performance, and craft.
+            I'm available for backend development, data engineering, technical tutoring,
+            or anything at the intersection of math and software.
+          </p>
+        </div>
+        <div class="about-sidebar fade-up">
+          <div class="fact-card">
+            <div class="fact-card-label">Currently</div>
+            <div class="fact-card-value">
+              Applied Mathematics — FGV/EMAp, Rio de Janeiro.<br />
+              Collaborator @ SigmaCamp (Sharon, CT).
+            </div>
+          </div>
+          <div class="fact-card">
+            <div class="fact-card-label">Languages</div>
+            <div class="lang-list">
+              <div class="lang-item"><span class="lang-name">Portuguese</span><span class="lang-level">Native</span></div>
+              <div class="lang-item"><span class="lang-name">English</span><span class="lang-level">Fluent</span></div>
+              <div class="lang-item"><span class="lang-name">French</span><span class="lang-level">Fluent</span></div>
+              <div class="lang-item"><span class="lang-name">Spanish</span><span class="lang-level">Fluent</span></div>
+              <div class="lang-item"><span class="lang-name">Russian</span><span class="lang-level">Advanced</span></div>
+              <div class="lang-item"><span class="lang-name">German</span><span class="lang-level">Beginner</span></div>
+              <div class="lang-item"><span class="lang-name">Italian</span><span class="lang-level">Beginner</span></div>
+            </div>
+          </div>
+          <div class="fact-card">
+            <div class="fact-card-label">Location</div>
+            <div class="fact-card-value">São Paulo, Brazil — open to remote work worldwide.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────────────
+       PROJECTS
+  ─────────────────────────────────────────── -->
+  <section id="projects">
+  <div class="container">
+    <p class="section-label fade-up">Projects</p>
+    <h2 class="section-title fade-up">Things I've actually built</h2>
+
+    <div class="projects-grid stagger">
+
+      <div class="project-card featured">
+        <div>
+          <div class="project-meta">
+            <span class="project-lang">C++</span>
+            <div class="project-links">
+              <a href="https://github.com/arthurabello/dsa-final-project" target="_blank" class="project-link">GitHub ↗</a>
+            </div>
+          </div>
+          <h3>Inverted Index</h3>
+          <p>
+            Full implementation of an Inverted Index in C++ — the data structure behind every search engine.
+            The interesting part: a comparative benchmark of three different tree structures (BST, AVL, B-tree)
+            measuring build time, query latency, and memory footprint across corpuses of increasing size.
+            Not just "it works" — but <em>why one is faster than the other under specific conditions</em>.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Data Structures</span>
+            <span class="tag">BST</span>
+            <span class="tag">AVL Tree</span>
+            <span class="tag">B-Tree</span>
+            <span class="tag">Benchmarking</span>
+          </div>
+        </div>
+        <div>
+          <div class="project-meta">
+            <span class="project-lang">C</span>
+            <div class="project-links">
+              <a href="https://github.com/arthurabello/knn" target="_blank" class="project-link">GitHub ↗</a>
+            </div>
+          </div>
+          <h3>K-Nearest Neighbors — from scratch</h3>
+          <p>
+            KNN implemented in plain C with no ML libraries. The focus was on performance and memory efficiency:
+            manual memory management, cache-aware data layout, and profiling to understand where cycles actually go.
+            A useful exercise in understanding what the abstractions of numpy or sklearn are actually doing underneath.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Memory Management</span>
+            <span class="tag">Performance</span>
+            <span class="tag">Intel ML Training</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-meta">
+          <span class="project-lang">Python / NumPy</span>
+          <div class="project-links">
+            <a href="https://github.com/arthurabello/nla-assignment-3" target="_blank" class="project-link">GitHub ↗</a>
+          </div>
+        </div>
+        <h3>Hessenberg Reduction & Spectral Analysis</h3>
+        <p>
+          Implementation of Hessenberg reduction routines for orthogonal matrices and spectral analysis
+          of the resulting forms — part of a Numerical Linear Algebra course at FGV/EMAp.
+          Applied to understand eigenvalue stability and the numerical behaviour of orthogonal transformations.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Numerical Linear Algebra</span>
+          <span class="tag">Eigenvalues</span>
+          <span class="tag">NumPy</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-meta">
+          <span class="project-lang">Python / NumPy</span>
+          <div class="project-links">
+            <a href="https://github.com/arthurabello/nla-assignment-4" target="_blank" class="project-link">GitHub ↗</a>
+          </div>
+        </div>
+        <h3>Gaussian Matrices & High-Dimensional Chaos</h3>
+        <p>
+          Exploration of how standard matrix metrics — condition number, spectral radius, singular value distribution —
+          behave as Gaussian random matrices grow in dimension. Reveals the counterintuitive geometry
+          of high-dimensional probability, including concentration of measure phenomena.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Random Matrix Theory</span>
+          <span class="tag">High-Dimensional Geometry</span>
+          <span class="tag">Statistics</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-meta">
+          <span class="project-lang">Python / Pygame</span>
+          <div class="project-links">
+            <a href="https://github.com/arthurabello/warbound" target="_blank" class="project-link">GitHub ↗</a>
+          </div>
+        </div>
+        <h3>Warbound</h3>
+        <p>
+          A turn-based strategy game inspired by Sun Tzu's <em>The Art of War</em>,
+          built entirely with Pygame. Designed from scratch: game loop, state machine,
+          unit AI, and map rendering. More interesting than it sounds — building a game
+          teaches you more about data modeling than most tutorials.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Game Dev</span>
+          <span class="tag">State Machines</span>
+          <span class="tag">AI</span>
+          <span class="tag">Pygame</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-meta">
+          <span class="project-lang">C++</span>
+        </div>
+        <h3>Metroidvania Game Engine</h3>
+        <p>
+          A game engine built in C++ designed to support a Metroidvania-style game.
+          Covers core engine concerns: rendering loop, entity-component architecture,
+          collision detection, and scene management. Lower-level and more instructive
+          than using an existing engine.
+        </p>
+        <div class="project-tags">
+          <span class="tag">C++</span>
+          <span class="tag">Game Engine</span>
+          <span class="tag">ECS</span>
+          <span class="tag">Systems Programming</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-meta">
+          <span class="project-lang">Python / SQL</span>
+        </div>
+        <h3>Stone Co. — Business Stability Modelling</h3>
+        <p>
+          Exploratory data analysis of SMEs in Maceió's metropolitan area to support
+          Stone's strategic decisions. Developed a 15-year business stability projection model
+          materialised as a geospatial map with GeoPandas — showing resilience clusters
+          and expansion zones. Supervised jointly by FGV, UFAL, and USP.
+        </p>
+        <div class="project-tags">
+          <span class="tag">EDA</span>
+          <span class="tag">GeoPandas</span>
+          <span class="tag">Predictive Modelling</span>
+          <span class="tag">PostgreSQL</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- ──────────────────────────────────────────
+       EXPERIENCE
+  ─────────────────────────────────────────── -->
+  <section id="experience">
+  <div class="container">
+    <p class="section-label fade-up">Experience</p>
+    <h2 class="section-title fade-up">Where I've worked</h2>
+    <div class="timeline fade-up">
+
+      <div class="timeline-item">
+        <div class="timeline-dot active"></div>
+        <div class="timeline-header">
+          <span class="timeline-role">Instructor — Django & Software Engineering</span>
+          <span class="timeline-period">Sep — Dec 2025</span>
+        </div>
+        <div class="timeline-company">NES · Novo Ensino Suplementar · Maceió, Brazil</div>
+        <p class="timeline-desc">
+          Guided students through building the NES institutional website. Delivered a Django course and a
+          software engineering practices workshop covering Git, GitHub, and scalability principles.
+          Collaborated directly with Marcus Fontoura and Eli Cortez, both Technical Fellows at Microsoft Azure.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot active"></div>
+        <div class="timeline-header">
+          <span class="timeline-role">Counselor & Collaborator — SigmaCamp</span>
+          <span class="timeline-period">Jan 2024 — Present</span>
+        </div>
+        <div class="timeline-company">SigmaCamp · Sharon, CT, USA (Volunteer)</div>
+        <p class="timeline-desc">
+          Co-leads teams of 10–12 high-performing STEM students from the US and abroad in an intensive
+          summer program. Teaching Assistant for courses taught by Oxford and MIT professors.
+          Collaborator of an open international STEM competition (<a  href="https://sigmacamp.org/pom">Problem of The Month</a>)
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot active"></div>
+        <div class="timeline-header">
+          <span class="timeline-role">Counselor & Co-instructor — Fractals & Chaos Theoruy</span>
+          <span class="timeline-period">Jan 2024 — Present</span> 
+        </div>
+        <div class="timeline-company">Etapa SigmaCamp · Valinhos, SP, Brazil (Volunteer)</div>
+        <p class="timeline-desc">
+          At the Brazilian edition of SigmaCamp, coordinates student groups and co-instructs a Computer
+          Vision course alongside an AI Engineer from Lockheed Martin. Also co-instructs a Fractals & Chaos Theory alongside a postdoc from Oxford University. 
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <span class="timeline-role">Teaching Assistant — OOP, Data Science, Linear Algebra & Calculus</span>
+          <span class="timeline-period">Jul 2024 — Jul 2025</span>
+        </div>
+        <div class="timeline-company">NES · Novo Ensino Suplementar · Remote</div>
+        <p class="timeline-desc">
+          Teacher Assistant for many hight level undergraduate courses taught on an excellency center for mathematics and computer sciences for intellectually distinct high school students in Brazil (<a  href="https://novoensinosuplementar.com">Novo Ensino Suplementar</a>).
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <span class="timeline-role">Research Assistant — Data Science & Backend</span>
+          <span class="timeline-period">Oct — Dec 2023</span>
+        </div>
+        <div class="timeline-company">FGV/EMAp · Rio de Janeiro, Brazil</div>
+        <p class="timeline-desc">
+          Built the data backend of an oncology application for Grupo Hospitalar Conceição.
+          Modelled the PostgreSQL schema, wrote SQL queries for clinical reports,
+          and delivered interactive Power BI dashboards. Versioned with Git.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <span class="timeline-role">Data Science Research — Stone Co.</span>
+          <span class="timeline-period">Sep — Oct 2022</span>
+        </div>
+        <div class="timeline-company">ICMC–USP / CeMEAI · São Carlos, SP (supervised by FGV, UFAL & USP)</div>
+        <p class="timeline-desc">
+          Exploratory analysis of SME data from Maceió's metropolitan area to support Stone's strategic decisions.
+          Developed a 15-year business stability projection model visualised as a geospatial map with GeoPandas,
+          highlighting resilience clusters and expansion zones.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <span class="timeline-role">Data Science Research — Lojas Americanas</span>
+          <span class="timeline-period">Sep — Oct 2022</span>
+        </div>
+        <div class="timeline-company">ICMC–USP / CeMEAI · São Carlos, SP</div>
+        <p class="timeline-desc">
+          EDA on sales and logistics data across multiple store units. Used SQL and PostgreSQL for
+          data structuring and querying; Python with Pandas and GeoPandas for geospatial analysis;
+          delivered visualisations in Power BI directly to the Lojas Americanas team.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <span class="timeline-role">Monitor — French Language / DELF B2</span>
+          <span class="timeline-period">Jul — Dec 2022</span>
+        </div>
+        <div class="timeline-company">Aliança Francesa · Maceió, Brazil</div>
+        <p class="timeline-desc">
+          Assisted students preparing for the DELF B2 French proficiency certification exam.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- ──────────────────────────────────────────
+       STACK
+  ─────────────────────────────────────────── -->
+  <section id="stack">
+    <div class="container">
+      <p class="section-label fade-up">Stack</p>
+      <h2 class="section-title fade-up">What I work with</h2>
+      <div class="stack-grid stagger">
+
+        <div class="stack-group">
+          <h4>Languages</h4>
+          <div class="stack-items">
+            <div class="stack-item">Python</div>
+            <div class="stack-item">C / C++</div>
+            <div class="stack-item">SQL</div>
+          </div>
+        </div>
+
+        <div class="stack-group">
+          <h4>Backend & Infrastructure</h4>
+          <div class="stack-items">
+            <div class="stack-item">Django</div>
+            <div class="stack-item">Flask</div>
+            <div class="stack-item">PostgreSQL</div>
+            <div class="stack-item">AWS RDS</div>
+            <div class="stack-item">Git / GitHub Actions</div>
+          </div>
+        </div>
+
+        <div class="stack-group">
+          <h4>Data & ML</h4>
+          <div class="stack-items">
+            <div class="stack-item">Pandas / NumPy</div>
+            <div class="stack-item">GeoPandas</div>
+            <div class="stack-item">Scikit-learn</div>
+            <div class="stack-item">Power BI</div>
+          </div>
+        </div>
+
+        <div class="stack-group">
+          <h4>Mathematics</h4>
+          <div class="stack-items">
+            <div class="stack-item">Numerical Linear Algebra</div>
+            <div class="stack-item">Probability & Statistics</div>
+            <div class="stack-item">Real Analysis</div>
+            <div class="stack-item">Algorithms & Complexity</div>
+          </div>
+        </div>
+
+        <div class="stack-group">
+          <h4>Soft Skills</h4>
+          <div class="stack-items">
+            <div class="stack-item">Technical Teaching</div>
+            <div class="stack-item">Team Leadership</div>
+            <div class="stack-item">Project Management</div>
+            <div class="stack-item">Cross-cultural Communication</div>
+          </div>
+        </div>
+
+        <div class="stack-group">
+          <h4>Currently learning</h4>
+          <div class="stack-items">
+            <div class="stack-item">AI Agent Frameworks</div>
+            <div class="stack-item">PydanticAI / FastAPI</div>
+            <div class="stack-item">Systems Programming</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────────────
+       CONTACT
+  ─────────────────────────────────────────── -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <p class="section-label">Let's talk</p>
+        <h2 class="section-title fade-up" style="text-align:center;">Available for remote work,<br />anywhere in the world.</h2>
+        <p class="contact-subtitle fade-up">
+          Whether you need a backend developer, a data engineer, a technical tutor,
+          or just someone who can think clearly about a hard problem — reach out.
+          I respond in English, French, Spanish, Portuguese, or Russian.
+        </p>
+        <div class="contact-links stagger">
+          <a href="mailto:rabello.arthur.oliveira@gmail.com" class="contact-link">
+            <span class="contact-link-icon">✉</span>
+            <span class="contact-link-label">Email</span>
+            <span class="contact-link-value">rabello.arthur.oliveira</span>
+          </a>
+          <a href="https://linkedin.com/in/arthurabello" target="_blank" class="contact-link">
+            <span class="contact-link-icon">in</span>
+            <span class="contact-link-label">LinkedIn</span>
+            <span class="contact-link-value">arthurabello</span>
+          </a>
+          <a href="https://github.com/arthurabello" target="_blank" class="contact-link">
+            <span class="contact-link-icon">⌥</span>
+            <span class="contact-link-label">GitHub</span>
+            <span class="contact-link-value">arthurabello</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────────────
+       FOOTER
+  ─────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">© 2025 Arthur Rabello Oliveira</span>
+      <span class="footer-made">Built with HTML, CSS, and stubbornness.</span>
+    </div>
+  </footer>
+
+  <!-- ──────────────────────────────────────────
+       JS: Scroll animations
+  ─────────────────────────────────────────── -->
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    document.querySelectorAll('.fade-up, .stagger').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Kick off hero stats immediately (already in viewport)
+    setTimeout(() => {
+      document.querySelectorAll('#hero .stagger').forEach(el => {
+        el.classList.add('visible');
+      });
+    }, 400);
+  </script>
+
+</body>
+</html>
