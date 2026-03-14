@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arthur Rabello — Backend Developer & Applied Mathematician</title>
+  <title>🍷🗿 Arthur Rabello 🗿🍷</title>
   <meta name="description" content="Backend developer and applied mathematician. I build things that require thinking, not just typing." />
 
   <!-- Fonts -->
@@ -40,14 +40,14 @@
     ───────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; font-size: 19px; }
 
     body {
       background: var(--bg);
       color: var(--text);
       font-family: var(--font-body);
-      font-weight: 300;
-      line-height: 1.7;
+      font-weight: 400;
+      line-height: 1.75;
       overflow-x: hidden;
     }
 
@@ -331,10 +331,10 @@
     }
 
     .about-text p {
-      font-size: 1rem;
-      font-weight: 300;
+      font-size: 1.05rem;
+      font-weight: 400;
       color: var(--text-dim);
-      line-height: 1.8;
+      line-height: 1.85;
       margin-bottom: 1.25rem;
     }
 
@@ -345,11 +345,11 @@
 
     .about-text p:first-of-type {
       font-family: var(--font-display);
-      font-size: 1.2rem;
+      font-size: 1.45rem;
       color: var(--text);
       font-weight: 300;
       font-style: italic;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     .about-sidebar {
@@ -440,13 +440,6 @@
 
     .project-card:hover::before { opacity: 1; }
 
-    .project-card.featured {
-      grid-column: span 2;
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 2rem;
-    }
-
     .project-meta {
       display: flex;
       align-items: center;
@@ -493,12 +486,11 @@
     }
 
     .project-card p {
-      font-size: 0.88rem;
+      font-size: 0.95rem;
       color: var(--text-dim);
-      line-height: 1.7;
+      line-height: 1.75;
       margin-bottom: 1.25rem;
     }
-
     .project-tags {
       display: flex;
       flex-wrap: wrap;
@@ -582,10 +574,15 @@
 
     .timeline-item:last-child { margin-bottom: 0; }
 
-    .timeline-desc a, .project-card p a {
+    a:not(.btn):not(.nav-links a):not(.project-link):not(.contact-link):not(.nav-logo) {
       color: var(--gold);
       border-bottom: 1px solid var(--gold-dim);
       transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+    }
+
+    a:not(.btn):not(.nav-links a):not(.project-link):not(.contact-link):not(.nav-logo):hover {
+      color: var(--text);
+      border-bottom-color: var(--text);
     }
 
     .timeline-desc a:hover {
@@ -639,10 +636,10 @@
       margin-bottom: 0.5rem;
     }
 
-    .timeline-desc {
-      font-size: 0.85rem;
+   .timeline-desc {
+      font-size: 0.95rem;
       color: var(--text-dim);
-      line-height: 1.65;
+      line-height: 1.75;
     }
 
     /* ─────────────────────────────────────────────
@@ -770,6 +767,8 @@
     .stagger.visible > *:nth-child(4) { opacity:1; transform:translateY(0); transition-delay: 0.24s; }
     .stagger.visible > *:nth-child(5) { opacity:1; transform:translateY(0); transition-delay: 0.32s; }
     .stagger.visible > *:nth-child(6) { opacity:1; transform:translateY(0); transition-delay: 0.40s; }
+    .stagger.visible > *:nth-child(7) { opacity:1; transform:translateY(0); transition-delay: 0.48s; }
+    .stagger.visible > *:nth-child(8) { opacity:1; transform:translateY(0); transition-delay: 0.56s; }
 
     /* ─────────────────────────────────────────────
        RESPONSIVE
@@ -801,7 +800,7 @@
        NAV
   ─────────────────────────────────────────── -->
   <nav>
-    <span class="nav-logo">arthurabello</span>
+    <a href="#hero" class="nav-logo">arthurabello</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -818,7 +817,7 @@
     <div class="container">
       <div class="hero-inner">
         <div>
-          <p class="hero-tag">Backend Developer · Applied Mathematician</p>
+          <p class="hero-tag">Backend Developer · Linguist · Applied Mathematician · Teacher</p>
           <h1 class="hero-name">Arthur<br /><em>Rabello</em></h1>
           <p class="hero-tagline">
             I build things that require thinking, not just typing.<br />
@@ -860,16 +859,15 @@
       <div class="about-grid">
         <div class="about-text fade-up">
           <p>
-            I grew up between more than 15 countries, absorbing mathematics the way other kids absorb football.
+            I grew up between 15 countries, absorbing mathematics the way other kids absorb football.
             My father is a mathematician. Abstraction was never scary — it was just dinner conversation.
           </p>
           <p>
-            Before finishing high school, I was already a <strong>research collaborator at the Statistics and Data Science Lab (LED–UFAL)</strong>,
-            auditing undergraduate math courses, and competing in national olympiads. Not because I had to —
+            Before finishing high school, I was already a <strong>research collaborator at the <a href="https://im.ufal.br/laboratorio/led/">Statistics and Data Science Lab (LED–UFAL)</a></strong>, auditing undergraduate math courses, and competing in national olympiads. Not because I had to —
             because I found it genuinely enjoyable 
           </p>
           <p>
-            Today I study <strong>Applied Mathematics at FGV/EMAp</strong> (full scholarship), 
+            Today I study <strong><a href="https://emap.fgv.br/">Applied Mathematics at FGV/EMAp</a></strong> (full scholarship), 
             where the curriculum forces you to actually understand things: not just implement gradient descent, 
             but derive it. I implement algorithms from scratch in C and C++. I know what a B-tree is 
             and I've benchmarked one.
@@ -893,7 +891,7 @@
             <div class="lang-list">
               <div class="lang-item"><span class="lang-name">Portuguese</span><span class="lang-level">Native</span></div>
               <div class="lang-item"><span class="lang-name">English</span><span class="lang-level">Fluent</span></div>
-              <div class="lang-item"><span class="lang-name">French</span><span class="lang-level">Fluent</span></div>
+              <div class="lang-item"><span class="lang-name">French</span><span class="lang-level">Native</span></div>
               <div class="lang-item"><span class="lang-name">Spanish</span><span class="lang-level">Fluent</span></div>
               <div class="lang-item"><span class="lang-name">Russian</span><span class="lang-level">Advanced</span></div>
               <div class="lang-item"><span class="lang-name">German</span><span class="lang-level">Beginner</span></div>
@@ -919,48 +917,47 @@
 
     <div class="projects-grid stagger">
 
-      <div class="project-card featured">
-        <div>
-          <div class="project-meta">
-            <span class="project-lang">C++</span>
-            <div class="project-links">
-              <a href="https://github.com/arthurabello/dsa-final-project" target="_blank" class="project-link">GitHub ↗</a>
-            </div>
-          </div>
-          <h3>Inverted Index</h3>
-          <p>
-            Full implementation of an Inverted Index in C++ — the data structure behind every search engine.
-            The interesting part: a comparative benchmark of three different tree structures (BST, AVL, B-tree)
-            measuring build time, query latency, and memory footprint across corpuses of increasing size.
-            Not just "it works" — but <em>why one is faster than the other under specific conditions</em>.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Data Structures</span>
-            <span class="tag">BST</span>
-            <span class="tag">AVL Tree</span>
-            <span class="tag">B-Tree</span>
-            <span class="tag">Benchmarking</span>
+      <div class="project-card">
+        <div class="project-meta">
+          <span class="project-lang">C++</span>
+          <div class="project-links">
+            <a href="https://github.com/arthurabello/dsa-final-project" target="_blank" class="project-link">GitHub ↗</a>
           </div>
         </div>
-        <div>
-          <div class="project-meta">
-            <span class="project-lang">C</span>
-            <div class="project-links">
-              <a href="https://github.com/arthurabello/knn" target="_blank" class="project-link">GitHub ↗</a>
-            </div>
+        <h3>Inverted Index</h3>
+        <p>
+          Full implementation of an Inverted Index in C++ — the data structure behind every search engine.
+          The interesting part: a comparative benchmark of three different tree structures (BST, AVL, B-tree)
+          measuring build time, query latency, and memory footprint across corpuses of increasing size.
+          Not just "it works" — but <em>why one is faster than the other under specific conditions</em>.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Data Structures</span>
+          <span class="tag">BST</span>
+          <span class="tag">AVL Tree</span>
+          <span class="tag">B-Tree</span>
+          <span class="tag">Benchmarking</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-meta">
+          <span class="project-lang">C</span>
+          <div class="project-links">
+            <a href="https://github.com/arthurabello/knn" target="_blank" class="project-link">GitHub ↗</a>
           </div>
-          <h3>K-Nearest Neighbors — from scratch</h3>
-          <p>
-            KNN implemented in plain C with no ML libraries. The focus was on performance and memory efficiency:
-            manual memory management, cache-aware data layout, and profiling to understand where cycles actually go.
-            A useful exercise in understanding what the abstractions of numpy or sklearn are actually doing underneath.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Machine Learning</span>
-            <span class="tag">Memory Management</span>
-            <span class="tag">Performance</span>
-            <span class="tag">Intel ML Training</span>
-          </div>
+        </div>
+        <h3>K-Nearest Neighbors — from scratch</h3>
+        <p>
+          KNN implemented in plain C with no ML libraries. The focus was on performance and memory efficiency:
+          manual memory management, cache-aware data layout, and profiling to understand where cycles actually go.
+          A useful exercise in understanding what the abstractions of numpy or sklearn are actually doing underneath.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Machine Learning</span>
+          <span class="tag">Memory Management</span>
+          <span class="tag">Performance</span>
+          <span class="tag">Intel ML Training</span>
         </div>
       </div>
 
@@ -993,14 +990,36 @@
         </div>
         <h3>Gaussian Matrices & High-Dimensional Chaos</h3>
         <p>
-          Exploration of how standard matrix metrics — condition number, spectral radius, singular value distribution —
-          behave as Gaussian random matrices grow in dimension. Reveals the counterintuitive geometry
-          of high-dimensional probability, including concentration of measure phenomena.
+          Exploration of how standard matrix metrics — condition number, spectral radius, singular value
+          distribution — behave as Gaussian random matrices grow in dimension. Reveals the counterintuitive
+          geometry of high-dimensional probability, including concentration of measure phenomena.
         </p>
         <div class="project-tags">
           <span class="tag">Random Matrix Theory</span>
           <span class="tag">High-Dimensional Geometry</span>
           <span class="tag">Statistics</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-meta">
+          <span class="project-lang">Python / Django / PostgreSQL</span>
+          <div class="project-links">
+            <a href="https://github.com/nes-collaborate/oncologia" target="_blank" class="project-link">GitHub ↗</a>
+          </div>
+        </div>
+        <h3>Oncology Management System</h3>
+        <p>
+          Comprehensive oncological patient management system built for the GHC Clinical Center,
+          developed in collaboration with NES during the FGV Workshop of Mathematical Problems.
+          Modelled the PostgreSQL schema, wrote SQL queries for clinical reports, and delivered
+          interactive Power BI dashboards. The kind of project where correctness actually matters.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Django</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Healthcare</span>
+          <span class="tag">Power BI</span>
         </div>
       </div>
 
@@ -1030,7 +1049,7 @@
         <div class="project-meta">
           <span class="project-lang">C++</span>
         </div>
-        <h3>Metroidvania Game Engine</h3>
+        <h3>SGEngine</h3>
         <p>
           A game engine built in C++ designed to support a Metroidvania-style game.
           Covers core engine concerns: rendering loop, entity-component architecture,
@@ -1063,7 +1082,6 @@
           <span class="tag">PostgreSQL</span>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -1211,8 +1229,7 @@
           <div class="stack-items">
             <div class="stack-item">Django</div>
             <div class="stack-item">Flask</div>
-            <div class="stack-item">PostgreSQL</div>
-            <div class="stack-item">AWS RDS</div>
+            <div class="stack-item">PostgreSQL</div>  
             <div class="stack-item">Git / GitHub Actions</div>
           </div>
         </div>
@@ -1220,10 +1237,9 @@
         <div class="stack-group">
           <h4>Data & ML</h4>
           <div class="stack-items">
-            <div class="stack-item">Pandas / NumPy</div>
+            <div class="stack-item">Pandas / NumPy / Matplotlib</div>
             <div class="stack-item">GeoPandas</div>
             <div class="stack-item">Scikit-learn</div>
-            <div class="stack-item">Power BI</div>
           </div>
         </div>
 
@@ -1240,10 +1256,10 @@
         <div class="stack-group">
           <h4>Soft Skills</h4>
           <div class="stack-items">
-            <div class="stack-item">Technical Teaching</div>
+            <div class="stack-item">Teaching</div>
             <div class="stack-item">Team Leadership</div>
             <div class="stack-item">Project Management</div>
-            <div class="stack-item">Cross-cultural Communication</div>
+            <div class="stack-item">Leadership</div>
           </div>
         </div>
 
@@ -1252,7 +1268,6 @@
           <div class="stack-items">
             <div class="stack-item">AI Agent Frameworks</div>
             <div class="stack-item">PydanticAI / FastAPI</div>
-            <div class="stack-item">Systems Programming</div>
           </div>
         </div>
 
@@ -1299,7 +1314,7 @@
   ─────────────────────────────────────────── -->
   <footer>
     <div class="footer-inner">
-      <span class="footer-copy">© 2025 Arthur Rabello Oliveira</span>
+      <span class="footer-copy">© 2026 Arthur Rabello Oliveira</span>
       <span class="footer-made">Built with HTML, CSS, and stubbornness.</span>
     </div>
   </footer>
