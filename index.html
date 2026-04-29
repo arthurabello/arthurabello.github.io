@@ -1,1554 +1,678 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🍷🗿 Arthur Rabello 🗿🍷</title>
-  <meta name="description" content="Backend developer and applied mathematician. I build things that require thinking, not just typing." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Arthur Rabello Oliveira</title>
+        <meta
+            name="description"
+            content="Applied mathematician and backend developer. Based in Brazil."
+        />
+        <style>
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
 
-  <style>
-    :root {
-      --bg:        #0d0d0b;
-      --bg2:       #131310;
-      --bg3:       #1a1a16;
-      --border:    rgba(255,255,255,0.07);
-      --text:      #e8e4d8;
-      --text-dim:  #8a8778;
-      --text-faint:#4a4940;
-      --gold:      #c9a84c;
-      --gold-dim:  #7a6330;
-      --gold-glow: rgba(201,168,76,0.12);
-      --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-mono:    'IBM Plex Mono', 'Courier New', monospace;
-      --font-body:    'DM Sans', system-ui, sans-serif;
-      --radius: 4px;
-      --ease:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
+            html {
+                scroll-behavior: smooth;
+                font-size: 17px;
+            }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 19px; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      font-weight: 400;
-      line-height: 1.75;
-      overflow-x: hidden;
-    }
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.4;
-    }
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
+            body {
+                background: #f5f4f0;
+                color: #1a1a1a;
+                font-family:
+                    system-ui,
+                    -apple-system,
+                    sans-serif;
+                font-weight: 400;
+                line-height: 1.7;
+                min-height: 100vh;
+            }
 
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      position: relative;
-      z-index: 1;
-    }
-    section { padding: 6rem 0; }
-    section + section { border-top: 1px solid var(--border); }
+            /* ── Erwin background ── */
+            .bg {
+                position: fixed;
+                inset: 0;
+                background: url("erwin.jpg") center top / cover no-repeat;
+                opacity: 0.13;
+                pointer-events: none;
+                z-index: 0;
+            }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 1.25rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--border);
-      background: rgba(13, 13, 11, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-    .nav-logo {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      color: var(--gold);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      transition: color 0.2s var(--ease);
-    }
-    .nav-links a:hover { color: var(--text); }
+            /* ── Nav ── */
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 10;
+                background: rgba(245, 244, 240, 0.92);
+                backdrop-filter: blur(6px);
+                border-bottom: 1px solid #ddd;
+                padding: 0.75rem 2rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
+            }
+            .nav-name {
+                font-family: Georgia, serif;
+                font-size: 0.95rem;
+                font-weight: normal;
+                white-space: nowrap;
+            }
+            .nav-links {
+                display: flex;
+                gap: 1.5rem;
+                list-style: none;
+                flex-wrap: wrap;
+            }
+            .nav-links a {
+                font-size: 0.82rem;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                color: #555;
+                text-decoration: none;
+            }
+            .nav-links a:hover {
+                color: #1a1a1a;
+            }
 
-    /* ── LANGUAGE SWITCHER ── */
-    .lang-switcher {
-      position: relative;
-    }
-    .lang-btn {
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 0.3rem 0.55rem;
-      cursor: pointer;
-      font-size: 1rem;
-      line-height: 1;
-      transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      color: var(--text-dim);
-    }
-    .lang-btn:hover {
-      border-color: var(--gold-dim);
-      background: var(--bg2);
-      color: var(--text);
-    }
-    .lang-btn-flag {
-      font-size: 1.1rem;
-      line-height: 1;
-    }
-    .lang-btn-code {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-    .lang-dropdown {
-      position: absolute;
-      top: calc(100% + 0.6rem);
-      right: 0;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      min-width: 160px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-      opacity: 0;
-      transform: translateY(-6px);
-      pointer-events: none;
-      transition: opacity 0.18s var(--ease), transform 0.18s var(--ease);
-      z-index: 200;
-    }
-    .lang-dropdown.open {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: all;
-    }
-    .lang-option {
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 0.6rem 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      cursor: pointer;
-      color: var(--text-dim);
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      transition: background 0.15s, color 0.15s;
-      text-align: left;
-    }
-    .lang-option:hover {
-      background: var(--bg3);
-      color: var(--text);
-    }
-    .lang-option.active {
-      color: var(--gold);
-    }
-    .lang-option .lang-flag { font-size: 1rem; }
+            /* ── Layout ── */
+            main {
+                position: relative;
+                z-index: 1;
+                max-width: 720px;
+                margin: 0 auto;
+                padding: 5rem 2rem 4rem;
+            }
 
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 0;
-      padding-top: 6rem;
-    }
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 4rem;
-      align-items: end;
-      width: 100%;
-    }
-    .hero-tag {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .hero-tag::before {
-      content: '';
-      display: block;
-      width: 32px;
-      height: 1px;
-      background: var(--gold);
-    }
-    h1.hero-name {
-      font-family: var(--font-display);
-      font-size: clamp(3.5rem, 8vw, 7rem);
-      font-weight: 300;
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 1.5rem;
-    }
-    h1.hero-name em { font-style: italic; color: var(--gold); }
-    .hero-tagline {
-      font-size: 1rem;
-      font-weight: 300;
-      color: var(--text-dim);
-      max-width: 480px;
-      line-height: 1.75;
-      margin-bottom: 2.5rem;
-    }
-    .hero-cta { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
-    .btn {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.75rem 1.5rem;
-      border: 1px solid;
-      border-radius: var(--radius);
-      transition: all 0.2s var(--ease);
-      cursor: pointer;
-    }
-    .btn-primary { background: var(--gold); color: var(--bg); border-color: var(--gold); }
-    .btn-primary:hover { background: transparent; color: var(--gold); }
-    .btn-secondary { background: transparent; color: var(--text-dim); border-color: var(--border); }
-    .btn-secondary:hover { border-color: var(--text-dim); color: var(--text); }
-    .hero-stats { display: flex; flex-direction: column; gap: 2rem; align-items: flex-end; }
-    .stat { text-align: right; }
-    .stat-number {
-      font-family: var(--font-display);
-      font-size: 3rem;
-      font-weight: 300;
-      color: var(--gold);
-      line-height: 1;
-    }
-    .stat-label {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-      margin-top: 0.25rem;
-    }
-    .hero-scroll {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      z-index: 1;
-    }
-    .hero-scroll span {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-    }
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--gold-dim), transparent);
-      animation: scrollpulse 2s ease-in-out infinite;
-    }
-    @keyframes scrollpulse {
-      0%, 100% { opacity: 0.3; transform: scaleY(1); }
-      50% { opacity: 1; transform: scaleY(1.1); }
-    }
+            section {
+                padding: 4rem 0;
+                border-top: 1px solid #ddd;
+            }
+            section:first-child {
+                border-top: none;
+                padding-top: 2rem;
+            }
 
-    /* ── SECTION HEADERS ── */
-    .section-label {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .section-label::before {
-      content: '';
-      display: block;
-      width: 24px;
-      height: 1px;
-      background: var(--gold);
-    }
-    h2.section-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 300;
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-      margin-bottom: 3rem;
-    }
+            h2 {
+                font-family: Georgia, serif;
+                font-size: 1.5rem;
+                font-weight: normal;
+                margin-bottom: 1.5rem;
+                color: #111;
+            }
 
-    /* ── ABOUT ── */
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-    .about-text p { font-size: 1.05rem; font-weight: 400; color: var(--text-dim); line-height: 1.85; margin-bottom: 1.25rem; }
-    .about-text p strong { color: var(--text); font-weight: 400; }
-    .about-text p:first-of-type {
-      font-family: var(--font-display);
-      font-size: 1.45rem;
-      color: var(--text);
-      font-weight: 300;
-      font-style: italic;
-      line-height: 1.65;
-    }
-    .about-sidebar { display: flex; flex-direction: column; gap: 2rem; }
-    .fact-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; }
-    .fact-card-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.75rem; }
-    .fact-card-value { font-family: var(--font-display); font-size: 1.05rem; font-weight: 300; color: var(--text); line-height: 1.5; }
-    .lang-list { display: flex; flex-direction: column; gap: 0.4rem; }
-    .lang-item { display: flex; justify-content: space-between; align-items: center; font-size: 0.88rem; }
-    .lang-name { color: var(--text); }
-    .lang-level { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+            a {
+                color: #2a5d8f;
+                text-decoration: underline;
+                text-underline-offset: 2px;
+            }
+            a:hover {
+                color: #1a3d60;
+            }
 
-    /* ── PROJECTS ── */
-    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-    .project-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.75rem;
-      transition: border-color 0.25s var(--ease), background 0.25s var(--ease);
-      position: relative;
-      overflow: hidden;
-    }
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
-      opacity: 0;
-      transition: opacity 0.3s var(--ease);
-    }
-    .project-card:hover { border-color: var(--gold-dim); background: var(--bg3); }
-    .project-card:hover::before { opacity: 1; }
-    .project-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
-    .project-lang {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      background: var(--gold-glow);
-      padding: 0.25rem 0.6rem;
-      border-radius: 99px;
-    }
-    .project-links { display: flex; gap: 0.75rem; }
-    .project-link {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold);
-      transition: color 0.2s var(--ease), text-shadow 0.2s var(--ease);
-    }
-    .project-link:hover { color: var(--text); text-shadow: 0 0 12px var(--gold); }
-    .project-card h3 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 400; line-height: 1.2; margin-bottom: 0.75rem; }
-    .project-card p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.75; margin-bottom: 1.25rem; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .tag { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); border: 1px solid var(--border); padding: 0.2rem 0.5rem; border-radius: var(--radius); }
+            /* ── Hero ── */
+            .hero {
+                padding: 3rem 0 2rem;
+                border-top: none;
+            }
+            .hero h1 {
+                font-family: Georgia, serif;
+                font-size: clamp(2rem, 5vw, 3rem);
+                font-weight: normal;
+                line-height: 1.2;
+                margin-bottom: 0.5rem;
+            }
+            .hero-sub {
+                font-size: 0.95rem;
+                color: #555;
+                margin-bottom: 1.5rem;
+            }
 
-    /* ── STACK ── */
-    .stack-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-    .stack-group h4 { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
-    .stack-items { display: flex; flex-direction: column; gap: 0.5rem; }
-    .stack-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; color: var(--text-dim); }
-    .stack-item::before { content: ''; width: 4px; height: 4px; background: var(--gold-dim); border-radius: 50%; flex-shrink: 0; }
+            /* ── About ── */
+            .about p {
+                margin-bottom: 1rem;
+            }
+            .about p:last-child {
+                margin-bottom: 0;
+                color: #555;
+                font-size: 0.92rem;
+            }
 
-    /* ── TIMELINE ── */
-    .timeline { position: relative; padding-left: 2rem; }
-    .timeline::before { content: ''; position: absolute; left: 5px; top: 8px; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--gold-dim), transparent); }
-    .timeline-item { position: relative; margin-bottom: 2.5rem; }
-    .timeline-item:last-child { margin-bottom: 0; }
-    .timeline-dot { position: absolute; left: -2rem; top: 8px; width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--gold-dim); background: var(--bg); }
-    .timeline-dot.active { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 12px var(--gold-glow); }
-    .timeline-header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 0.25rem; flex-wrap: wrap; }
-    .timeline-role { font-weight: 500; font-size: 0.95rem; color: var(--text); }
-    .timeline-period { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-faint); letter-spacing: 0.05em; white-space: nowrap; }
-    .timeline-company { font-size: 0.85rem; color: var(--gold-dim); margin-bottom: 0.5rem; }
-    .timeline-desc { font-size: 0.95rem; color: var(--text-dim); line-height: 1.75; }
+            /* ── Projects ── */
+            .projects-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            .project-card {
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                padding: 1rem 1.1rem;
+                background: rgba(245, 244, 240, 0.7);
+            }
+            .project-card h3 {
+                font-family: Georgia, serif;
+                font-size: 0.98rem;
+                font-weight: normal;
+                margin-bottom: 0.2rem;
+            }
+            .project-lang {
+                font-size: 0.75rem;
+                color: #777;
+                margin-bottom: 0.5rem;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+            .project-card p {
+                font-size: 0.88rem;
+                color: #333;
+                line-height: 1.6;
+                margin-bottom: 0.6rem;
+            }
+            .project-card a {
+                font-size: 0.82rem;
+            }
 
-    /* ── LINKS ── */
-    a:not(.btn):not(.nav-links a):not(.project-link):not(.contact-link):not(.nav-logo) {
-      color: var(--gold);
-      border-bottom: 1px solid var(--gold-dim);
-      transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
-    }
-    a:not(.btn):not(.nav-links a):not(.project-link):not(.contact-link):not(.nav-logo):hover {
-      color: var(--text);
-      border-bottom-color: var(--text);
-    }
+            /* ── Experience ── */
+            .exp-list {
+                list-style: none;
+            }
+            .exp-list li {
+                margin-bottom: 2rem;
+                padding-bottom: 2rem;
+                border-bottom: 1px solid #e8e8e4;
+            }
+            .exp-list li:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .exp-role {
+                font-family: Georgia, serif;
+                font-size: 1rem;
+                font-weight: normal;
+                margin-bottom: 0.1rem;
+            }
+            .exp-meta {
+                font-size: 0.82rem;
+                color: #666;
+                margin-bottom: 0.4rem;
+            }
+            .exp-desc {
+                font-size: 0.9rem;
+                color: #333;
+            }
 
-    /* ── CONTACT ── */
-    #contact { text-align: center; }
-    .contact-inner { max-width: 560px; margin: 0 auto; }
-    .contact-inner .section-label { justify-content: center; }
-    .contact-inner .section-label::before { display: none; }
-    .contact-subtitle { font-size: 0.95rem; color: var(--text-dim); margin-bottom: 2.5rem; line-height: 1.75; }
-    .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
-    .contact-link { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; padding: 1.25rem 1.75rem; border: 1px solid var(--border); border-radius: var(--radius); transition: all 0.2s var(--ease); background: var(--bg2); min-width: 120px; }
-    .contact-link:hover { border-color: var(--gold-dim); background: var(--bg3); }
-    .contact-link-icon { font-size: 1.2rem; }
-    .contact-link-label { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-faint); }
-    .contact-link-value { font-size: 0.82rem; color: var(--text-dim); }
+            /* ── Contact ── */
+            .contact-links {
+                list-style: none;
+                margin-top: 1rem;
+            }
+            .contact-links li {
+                margin-bottom: 0.5rem;
+                font-size: 0.95rem;
+            }
 
-    /* ── FOOTER ── */
-    footer { border-top: 1px solid var(--border); padding: 2rem; position: relative; z-index: 1; }
-    .footer-inner { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-    .footer-copy { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; color: var(--text-faint); }
-    .footer-made { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-faint); }
+            /* ── Footer ── */
+            footer {
+                position: relative;
+                z-index: 1;
+                text-align: center;
+                padding: 2rem;
+                font-size: 0.8rem;
+                color: #aaa;
+                border-top: 1px solid #ddd;
+            }
 
-    /* ── ANIMATIONS ── */
-    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.5s var(--ease), transform 0.5s var(--ease); }
-    .stagger.visible > *:nth-child(1)  { opacity:1; transform:translateY(0); transition-delay: 0s; }
-    .stagger.visible > *:nth-child(2)  { opacity:1; transform:translateY(0); transition-delay: 0.08s; }
-    .stagger.visible > *:nth-child(3)  { opacity:1; transform:translateY(0); transition-delay: 0.16s; }
-    .stagger.visible > *:nth-child(4)  { opacity:1; transform:translateY(0); transition-delay: 0.24s; }
-    .stagger.visible > *:nth-child(5)  { opacity:1; transform:translateY(0); transition-delay: 0.32s; }
-    .stagger.visible > *:nth-child(6)  { opacity:1; transform:translateY(0); transition-delay: 0.40s; }
-    .stagger.visible > *:nth-child(7)  { opacity:1; transform:translateY(0); transition-delay: 0.48s; }
-    .stagger.visible > *:nth-child(8)  { opacity:1; transform:translateY(0); transition-delay: 0.56s; }
-    .stagger.visible > *:nth-child(9)  { opacity:1; transform:translateY(0); transition-delay: 0.64s; }
-    .stagger.visible > *:nth-child(10) { opacity:1; transform:translateY(0); transition-delay: 0.72s; }
+            /* ── Music button ── */
+            #sound-btn {
+                position: fixed;
+                bottom: 1.5rem;
+                right: 1.5rem;
+                z-index: 20;
+                background: rgba(245, 244, 240, 0.92);
+                border: 1px solid #ccc;
+                border-radius: 999px;
+                padding: 0.35rem 0.85rem;
+                font-size: 0.78rem;
+                cursor: pointer;
+                color: #444;
+                backdrop-filter: blur(4px);
+                transition:
+                    background 0.15s,
+                    color 0.15s;
+                font-family: inherit;
+            }
+            #sound-btn:hover {
+                background: #eee;
+                color: #111;
+            }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      nav { padding: 1rem; }
-      .nav-links { gap: 1.25rem; }
-      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-      .hero-stats { flex-direction: row; align-items: center; justify-content: flex-start; }
-      .stat { text-align: left; }
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .stack-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 480px) {
-      .nav-links { display: none; }
-      .stack-grid { grid-template-columns: 1fr; }
-      h1.hero-name { font-size: 3rem; }
-    }
+            /* ── Responsive ── */
+            @media (max-width: 640px) {
+                nav {
+                    padding: 0.6rem 1rem;
+                }
+                .nav-name {
+                    display: none;
+                }
+                .nav-links {
+                    gap: 1rem;
+                }
+                main {
+                    padding: 4.5rem 1.25rem 3rem;
+                }
+                .projects-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="bg" aria-hidden="true"></div>
 
-    /* ── LANG TRANSITION ── */
-    .lang-fade { opacity: 0; transition: opacity 0.15s ease; }
-  </style>
-</head>
-<body>
+        <nav>
+            <span class="nav-name">Arthur Rabello</span>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
 
-  <nav>
-    <a href="#hero" class="nav-logo">arthurabello</a>
-    <div class="nav-right">
-      <ul class="nav-links">
-        <li><a href="#about"      data-i18n="nav.about">About</a></li>
-        <li><a href="#projects"   data-i18n="nav.projects">Projects</a></li>
-        <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
-        <li><a href="#stack"      data-i18n="nav.stack">Stack</a></li>
-        <li><a href="#contact"    data-i18n="nav.contact">Contact</a></li>
-      </ul>
-      <div class="lang-switcher">
-        <button class="lang-btn" id="lang-toggle" aria-label="Change language">
-          <span class="lang-btn-flag" id="lang-btn-flag">🇬🇧</span>
-          <span class="lang-btn-code" id="lang-btn-code">EN</span>
+        <main>
+            <!-- Hero -->
+            <section class="hero" id="top">
+                <h1>Arthur Rabello Oliveira</h1>
+                <p class="hero-sub">
+                    Applied Mathematician &amp; Backend Developer &mdash; São
+                    Paulo, Brazil
+                </p>
+            </section>
+
+            <!-- About -->
+            <section id="about">
+                <h2>About</h2>
+                <div class="about">
+                    <p>
+                        I grew up between 15 countries, with scientists as parents. Abstraction was just dinner conversation.
+                    </p>
+                    <p>
+                        Today I co-found and build <a href="https://nousystems.com.br" target="_blank" rel="noopener">NouSystems</a>, a technology company developing software for Brazilian schools. I studied Applied Mathematics at <a href="https://emap.fgv.br/" target="_blank" rel="noopener">FGV/EMAp</a> on a full scholarship, have been a research collaborator at <a href="https://im.ufal.br/laboratorio/led/" target="_blank" rel="noopener">LED–UFAL</a>, taught university-level courses to advanced high schoolers, and co-instructed programs alongside Oxford and MIT faculty. I speak Portuguese, English, French, Spanish, and Russian.
+                    </p>
+                    <p>Based in São Paulo.</p>
+                </div>
+            </section>
+
+            <!-- Projects -->
+            <section id="projects">
+                <h2>Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>Inverted Index</h3>
+                        <div class="project-lang">C++</div>
+                        <p>
+                            Implemented an Inverted Index data structure in C++, with a comparative efficiency analysis across three tree structures. Beyond the implementation itself, I took ownership of the team's engineering practices, establishing Git conventions, conducting code reviews, and holding the repository to professional standards throughout.
+                            We finished first in the class. The professor's closing remark was about our organization, not just our code. That one stuck with me.
+                        </p>
+                        <a
+                            href="https://github.com/arthurabello/dsa-final-project"
+                            target="_blank"
+                            rel="noopener"
+                            >GitHub →</a
+                        >
+                    </div>
+
+                    <div class="project-card">
+                        <h3>KNN from Scratch</h3>
+                        <div class="project-lang">C</div>
+                        <p>
+                            K-Nearest Neighbors in plain C with no ML libraries.
+                            Manual memory management, cache-aware data layout,
+                            and profiling, an exercise in understanding what
+                            numpy and sklearn actually do underneath.
+                        </p>
+                        <a
+                            href="https://github.com/arthurabello/knn"
+                            target="_blank"
+                            rel="noopener"
+                            >GitHub →</a
+                        >
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Hessenberg Reduction &amp; Spectral Analysis</h3>
+                        <div class="project-lang">Python / NumPy</div>
+                        <p>
+                            I implemented routines for reduction to Hessenberg form and spectral analysis of orthogonal matrices in the context of Numerical Linear Algebra.
+
+                            This one was extremely tricky, both technically and personally, i didn't like numerical LINEAR ALGEBRA (numerical analysis is cool) and the professor was extremely rigorous.
+                        </p>
+                        <a
+                            href="https://github.com/arthurabello/nla-assignment-3"
+                            target="_blank"
+                            rel="noopener"
+                            >GitHub →</a
+                        >
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Gaussian Matrices &amp; High-Dimensional Chaos</h3>
+                        <div class="project-lang">Python / NumPy</div>
+                        <p>
+                            We explored the variation in established metrics of Gaussian matrices in high dimensions.
+                            I really enjoyed not only the coding, but the writing part, documenting by hand what has been built was really fun.
+                        </p>
+                        <a
+                            href="https://github.com/arthurabello/nla-assignment-4"
+                            target="_blank"
+                            rel="noopener"
+                            >GitHub →</a
+                        >
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Oncology Management System</h3>
+                        <div class="project-lang">
+                            Python / Django / PostgreSQL
+                        </div>
+                        <p>
+                            Patient management system built for the GHC Clinical
+                            Center. PostgreSQL schema design, SQL queries for
+                            clinical reports, and interactive Power BI
+                            dashboards delivered to a real hospital team.
+                        </p>
+                        <a
+                            href="https://github.com/nes-collaborate/oncologia"
+                            target="_blank"
+                            rel="noopener"
+                            >GitHub →</a
+                        >
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Warbound</h3>
+                        <div class="project-lang">Python / Pygame</div>
+                        <p>
+                            A strategy game built with Pygame, inspired by the war tactics of Sun Tzu's The Art of War. My buddy Rodrigo Severo and I engineered the full game from scratch, mechanics, feature iteration, and at least one complete codebase rewrite that made everything click into place. Some of the best sessions ended at 5AM. That's the only metric that mattered. This project was what made me fall in love with software engineering as an art.
+                        </p>
+                        <a
+                            href="https://github.com/arthurabello/warbound"
+                            target="_blank"
+                            rel="noopener"
+                            >GitHub →</a
+                        >
+                    </div>
+
+                    <div class="project-card">
+                        <h3>SGEngine</h3>
+                        <div class="project-lang">C++</div>
+                        <p>
+                            A game engine in C++ for a Metroidvania-style game.
+                            Covers rendering loop, entity-component
+                            architecture, collision detection, and scene
+                            management from first principles.
+                        </p>
+                        <a
+                            href="https://github.com/arthurabello"
+                            target="_blank"
+                            rel="noopener"
+                            >GitHub →</a
+                        >
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Stone Co. Business Stability Model</h3>
+                        <div class="project-lang">Python / SQL</div>
+                        <p>
+                            Exploratory analysis of SMEs in Maceió's metro area
+                            to support Stone's strategic decisions. Produced a
+                            15-year stability projection visualised as a
+                            geospatial map with GeoPandas.
+                        </p>
+                        <a
+                            href="https://github.com/arthurabello"
+                            target="_blank"
+                            rel="noopener"
+                            >GitHub →</a
+                        >
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience -->
+            <section id="experience">
+                <h2>Experience</h2>
+                <ul class="exp-list">
+                    <li>
+                        <div class="exp-role">
+                            Instructor — Django &amp; Software Engineering
+                        </div>
+                        <div class="exp-meta">
+                            NES · Novo Ensino Suplementar · Maceió, Brazil · Sep
+                            – Dec 2025
+                        </div>
+                        <div class="exp-desc">
+                            I mentored students in the development of the NES
+                            institutional website, teaching a Django course and
+                            a mini-course on best practices in software
+                            engineering (Git, GitHub, scalability). Project
+                            carried out in direct collaboration with Marcus
+                            Fontoura (CTO Microsoft Azure, Technical Fellow) and
+                            Eli Cortez (also a Microsoft Technical Fellow). It
+                            was an honor to work with these gentlemen and to
+                            learn so much from their vast experience in this
+                            world
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="exp-role">
+                            Counselor &amp; Collaborator — SigmaCamp
+                        </div>
+                        <div class="exp-meta">
+                            SigmaCamp · Sharon, CT, USA · Jan 2024 – Present
+                        </div>
+                        <div class="exp-desc">
+                            I have been a volunteer Counselor at SigmaCamp for
+                            almost three years, participating in an intensive
+                            summer STEM program for high-achieving elementary
+                            and high school students from the United States and
+                            other countries. In each edition, I co-lead a team
+                            of approximately ten students, fostering a
+                            collaborative, intellectually challenging, and
+                            academically rigorous environment. I am responsible
+                            for academic mentoring and ongoing personal support
+                            for students throughout the residential program, as
+                            well as acting as a Teaching Assistant in weekly
+                            semi-labs, assisting with classes, technical
+                            discussions, and problem-solving. I also collaborate
+                            in the organization and execution of institutional
+                            activities, such as lectures, ceremonies, and
+                            workshops. One of the best parts of Sigma is to chat
+                            with the amazing people gathered there, and to put
+                            my russian to use. Baking neapolitan pizza for the
+                            staff members is also very fun.
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="exp-role">
+                            Counselor &amp; Co-instructor — Computer Vision
+                        </div>
+                        <div class="exp-meta">
+                            Etapa SigmaCamp · Valinhos, SP, Brazil · Jan 2024 –
+                            Present
+                        </div>
+                        <div class="exp-desc">
+                            In the Brazilian edition of SigmaCamp, I coordinated
+                            student groups and co-instructed a mini-course in
+                            Computer Vision alongside an AI Engineer from
+                            Lockheed Martin.
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="exp-role">
+                            Teaching Assistant — OOP, Data Science, Linear
+                            Algebra &amp; Calculus
+                        </div>
+                        <div class="exp-meta">
+                            NES · Novo Ensino Suplementar · Remote · Jul 2024 –
+                            Jul 2025
+                        </div>
+                        <div class="exp-desc">
+                            I was a TA for the Linear Algebra and Matrices,
+                            Object-Oriented Programming, and Fundamentals of
+                            Calculus for Optimization courses at NES. It was fun
+                            to put my taching skills to the test with these
+                            talented young students.
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="exp-role">
+                            Research Assistant — Data Science &amp; Backend
+                        </div>
+                        <div class="exp-meta">
+                            FGV/EMAp · Rio de Janeiro, Brazil · Oct – Dec 2023
+                        </div>
+                        <div class="exp-desc">
+                            In a project with Conceição Hospital Group, I
+                            developed the data backend for an oncology
+                            application. I could write about the technicalities
+                            of building this (Flask, PostgreSQL), but the best
+                            part was to contribute to something bigger, a
+                            hospital group had a problem, they asked us for
+                            help, we helped them -> the problem was no longer
+                            among us, and to see their gratitude and to
+                            acknowledge the fact that we actually helped people
+                            who save lives, that was amazing.
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="exp-role">
+                            Data Science Research — Stone Co.
+                        </div>
+                        <div class="exp-meta">
+                            ICMC–USP / CeMEAI · São Carlos, SP · Sep – Oct 2022
+                        </div>
+                        <div class="exp-desc">
+                            At 16, as a NES student, my team and I conducted an
+                            exploratory data analysis on SMEs in the
+                            metropolitan region of Maceió to support Stone's
+                            strategic decisions under technical supervision from
+                            FGV, UFAL, and USP. We built a 15-year business
+                            stability projection model, and materialized the
+                            results in a geospatial map using GeoPandas,
+                            identifying resilience clusters and strategic
+                            expansion zones. Honestly what is worth remembering
+                            from this day is that we showed up to the final
+                            presentation ready for every technical question they
+                            could throw at us. They didn't ask a single one.
+                            Stone wanted to know what the map meant for their
+                            expansion strategy, not how we built it. This may
+                            look obvious for someone with at least some
+                            experience in this wild and selfish world, but not
+                            to a 16 years old. This day i learned a lot. We
+                            finished among the top 3 finalists.
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="exp-role">
+                            Data Science Research — Lojas Americanas
+                        </div>
+                        <div class="exp-meta">
+                            ICMC–USP / CeMEAI · São Carlos, SP · Sep – Oct 2022
+                        </div>
+                        <div class="exp-desc">
+                            In this USP workshop with Lojas Americanas, we conducted an EDA (Enhanced Data Analysis) on sales and logistics data from different company units. I used SQL and Postgres to structure and query the data, and Python with Pandas and GeoPandas for geospatial analysis. At the end, we presented visualizations in Power BI to the Lojas Americanas team, under the supervision of ICMC-USP, the workshop organizers.
+                    </li>
+
+                    <li>
+                        <div class="exp-role">
+                            Monitor — French Language / DELF B2
+                        </div>
+                        <div class="exp-meta">
+                            Aliança Francesa · Maceió, Brazil · Jul – Dec 2022
+                        </div>
+                        <div class="exp-desc">
+                            Teaching assistant for a DELF B2 French Language Proficiency Course. The professor was French, a brilliant man, demanding, and with the patience of a parisien.
+                            The job was less about translating French into Portuguese and more about translating one way of thinking into another. French academic culture has a particular rigor and directness that doesn't map cleanly onto Brazilian classroom dynamics. Bridging that gap, keeping students from shutting down while keeping the professor's standards intact, was tough! It taught me A LOT about communication.
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Contact -->
+            <section id="contact">
+                <h2>Contact</h2>
+                <ul class="contact-links">
+                    <li>
+                        <a href="mailto:rabello.arthur.oliveira@gmail.com"
+                            >rabello.arthur.oliveira@gmail.com</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://github.com/arthurabello"
+                            target="_blank"
+                            rel="noopener"
+                            >github.com/arthurabello</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://linkedin.com/in/arthurabello"
+                            target="_blank"
+                            rel="noopener"
+                            >linkedin.com/in/arthurabello</a
+                        >
+                    </li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>&copy; 2026 Arthur Rabello Oliveira</footer>
+
+        <audio id="bgm" src="coolsong.mp3" loop></audio>
+        <button id="sound-btn" aria-label="Toggle music">
+            &#9834; Sound on
         </button>
-        <div class="lang-dropdown" id="lang-dropdown">
-          <button class="lang-option active" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
-          <button class="lang-option" data-lang="pt"><span class="lang-flag">🇧🇷</span> Português</button>
-          <button class="lang-option" data-lang="fr"><span class="lang-flag">🇫🇷</span> Français</button>
-          <button class="lang-option" data-lang="es"><span class="lang-flag">🇪🇸</span> Español</button>
-          <button class="lang-option" data-lang="ru"><span class="lang-flag">🇷🇺</span> Русский</button>
-          <button class="lang-option" data-lang="de"><span class="lang-flag">🇩🇪</span> Deutsch</button>
-          <button class="lang-option" data-lang="it"><span class="lang-flag">🇮🇹</span> Italiano</button>
-        </div>
-      </div>
-    </div>
-  </nav>
 
-  <section id="hero">
-    <div class="container">
-      <div class="hero-inner">
-        <div>
-          <p class="hero-tag" data-i18n="hero.tag">Backend Developer · Linguist · Applied Mathematician · Teacher</p>
-          <h1 class="hero-name">Arthur<br /><em>Rabello</em></h1>
-          <p class="hero-tagline" data-i18n-html="hero.tagline">I build things that require thinking, not just typing.<br />Based in Brazil. Working for the world.</p>
-          <div class="hero-cta">
-            <a href="#projects" class="btn btn-primary" data-i18n="hero.cta.work">See my work</a>
-            <a href="mailto:rabello.arthur.oliveira@gmail.com" class="btn btn-secondary" data-i18n="hero.cta.contact">Get in touch</a>
-          </div>
-        </div>
-        <div class="hero-stats stagger">
-          <div class="stat">
-            <div class="stat-number">7</div>
-            <div class="stat-label" data-i18n="hero.stat.languages">Languages spoken</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">15+</div>
-            <div class="stat-label" data-i18n="hero.stat.medals">Science olympiad medals</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">∞</div>
-            <div class="stat-label" data-i18n="hero.stat.curiosity">Curiosity</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="hero-scroll">
-      <span data-i18n="hero.scroll">scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+        <script>
+            const bgm = document.getElementById("bgm");
+            const btn = document.getElementById("sound-btn");
+            let playing = false;
 
-  <section id="about">
-    <div class="container">
-      <p class="section-label fade-up" data-i18n="about.label">About</p>
-      <div class="about-grid">
-        <div class="about-text fade-up">
-          <p data-i18n="about.p1">I grew up between 15 countries, absorbing mathematics the way other kids absorb football. My father is a mathematician. Abstraction was never scary — it was just dinner conversation.</p>
-          <p data-i18n-html="about.p2">Before finishing high school, I was already a <strong>research collaborator at the <a href="https://im.ufal.br/laboratorio/led/">Statistics and Data Science Lab (LED–UFAL)</a></strong>, auditing undergraduate math courses, and competing in national olympiads. Not because I had to — because I found it genuinely enjoyable.</p>
-          <p data-i18n-html="about.p3">Today I study <strong><a href="https://emap.fgv.br/">Applied Mathematics at FGV/EMAp</a></strong> (full scholarship), where the curriculum forces you to actually understand things: not just implement gradient descent, but derive it. I implement algorithms from scratch in C and C++. I know what a B-tree is and I've benchmarked one.</p>
-          <p data-i18n="about.p4">I want to work with teams that care about correctness, performance, and craft. I'm available for backend development, data engineering, technical tutoring, or anything at the intersection of math and software.</p>
-        </div>
-        <div class="about-sidebar fade-up">
-          <div class="fact-card">
-            <div class="fact-card-label" data-i18n="about.currently.label">Currently</div>
-            <div class="fact-card-value" data-i18n-html="about.currently.value">Applied Mathematics — FGV/EMAp, Rio de Janeiro.<br />Collaborator @ SigmaCamp (Sharon, CT).</div>
-          </div>
-          <div class="fact-card">
-            <div class="fact-card-label" data-i18n="about.languages.label">Languages</div>
-            <div class="lang-list">
-              <div class="lang-item"><span class="lang-name">Português</span><span class="lang-level" data-i18n="level.native">Native</span></div>
-              <div class="lang-item"><span class="lang-name">English</span><span class="lang-level" data-i18n="level.fluent">Fluent</span></div>
-              <div class="lang-item"><span class="lang-name">Français</span><span class="lang-level" data-i18n="level.native2">Native</span></div>
-              <div class="lang-item"><span class="lang-name">Español</span><span class="lang-level" data-i18n="level.fluent2">Fluent</span></div>
-              <div class="lang-item"><span class="lang-name">Русский</span><span class="lang-level" data-i18n="level.advanced">Advanced</span></div>
-              <div class="lang-item"><span class="lang-name">Deutsch</span><span class="lang-level" data-i18n="level.beginner">Beginner</span></div>
-              <div class="lang-item"><span class="lang-name">Italiano</span><span class="lang-level" data-i18n="level.beginner2">Beginner</span></div>
-            </div>
-          </div>
-          <div class="fact-card">
-            <div class="fact-card-label" data-i18n="about.location.label">Location</div>
-            <div class="fact-card-value" data-i18n="about.location.value">São Paulo, Brazil — open to remote work worldwide.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+            function setPlaying(val) {
+                playing = val;
+                btn.textContent = playing ? "■ Sound off" : "♪ Sound on";
+                if (playing) bgm.play().catch(() => {});
+                else bgm.pause();
+            }
 
-  <section id="projects">
-    <div class="container">
-      <p class="section-label fade-up" data-i18n="projects.label">Projects</p>
-      <h2 class="section-title fade-up" data-i18n="projects.title">Things I've actually built</h2>
-      <div class="projects-grid stagger">
+            btn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                setPlaying(!playing);
+            });
 
-        <div class="project-card">
-          <div class="project-meta">
-            <span class="project-lang">C++</span>
-            <div class="project-links"><a href="https://github.com/arthurabello/dsa-final-project" target="_blank" class="project-link">GitHub ↗</a></div>
-          </div>
-          <h3 data-i18n="proj.ii.title">Inverted Index</h3>
-          <p data-i18n="proj.ii.desc">Full implementation of an Inverted Index in C++ — the data structure behind every search engine. The interesting part: a comparative benchmark of three different tree structures (BST, AVL, B-tree) measuring build time, query latency, and memory footprint across corpuses of increasing size. Not just "it works" — but why one is faster than the other under specific conditions.</p>
-          <div class="project-tags">
-            <span class="tag">Data Structures</span><span class="tag">BST</span><span class="tag">AVL Tree</span><span class="tag">B-Tree</span><span class="tag">Benchmarking</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-meta">
-            <span class="project-lang">C</span>
-            <div class="project-links"><a href="https://github.com/arthurabello/knn" target="_blank" class="project-link">GitHub ↗</a></div>
-          </div>
-          <h3 data-i18n="proj.knn.title">K-Nearest Neighbors — from scratch</h3>
-          <p data-i18n="proj.knn.desc">KNN implemented in plain C with no ML libraries. The focus was on performance and memory efficiency: manual memory management, cache-aware data layout, and profiling to understand where cycles actually go. A useful exercise in understanding what the abstractions of numpy or sklearn are actually doing underneath.</p>
-          <div class="project-tags">
-            <span class="tag">Machine Learning</span><span class="tag">Memory Management</span><span class="tag">Performance</span><span class="tag">Intel ML Training</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-meta">
-            <span class="project-lang">Python / NumPy</span>
-            <div class="project-links"><a href="https://github.com/arthurabello/nla-assignment-3" target="_blank" class="project-link">GitHub ↗</a></div>
-          </div>
-          <h3 data-i18n="proj.hess.title">Hessenberg Reduction & Spectral Analysis</h3>
-          <p data-i18n="proj.hess.desc">Implementation of Hessenberg reduction routines for orthogonal matrices and spectral analysis of the resulting forms — part of a Numerical Linear Algebra course at FGV/EMAp. Applied to understand eigenvalue stability and the numerical behaviour of orthogonal transformations.</p>
-          <div class="project-tags">
-            <span class="tag">Numerical Linear Algebra</span><span class="tag">Eigenvalues</span><span class="tag">NumPy</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-meta">
-            <span class="project-lang">Python / NumPy</span>
-            <div class="project-links"><a href="https://github.com/arthurabello/nla-assignment-4" target="_blank" class="project-link">GitHub ↗</a></div>
-          </div>
-          <h3 data-i18n="proj.gauss.title">Gaussian Matrices & High-Dimensional Chaos</h3>
-          <p data-i18n="proj.gauss.desc">Exploration of how standard matrix metrics — condition number, spectral radius, singular value distribution — behave as Gaussian random matrices grow in dimension. Reveals the counterintuitive geometry of high-dimensional probability, including concentration of measure phenomena.</p>
-          <div class="project-tags">
-            <span class="tag">Random Matrix Theory</span><span class="tag">High-Dimensional Geometry</span><span class="tag">Statistics</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-meta">
-            <span class="project-lang">Python / Django / PostgreSQL</span>
-            <div class="project-links"><a href="https://github.com/nes-collaborate/oncologia" target="_blank" class="project-link">GitHub ↗</a></div>
-          </div>
-          <h3 data-i18n="proj.onco.title">Oncology Management System</h3>
-          <p data-i18n="proj.onco.desc">Comprehensive oncological patient management system built for the GHC Clinical Center, developed in collaboration with NES during the FGV Workshop of Mathematical Problems. Modelled the PostgreSQL schema, wrote SQL queries for clinical reports, and delivered interactive Power BI dashboards. The kind of project where correctness actually matters.</p>
-          <div class="project-tags">
-            <span class="tag">Django</span><span class="tag">PostgreSQL</span><span class="tag">Healthcare</span><span class="tag">Power BI</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-meta">
-            <span class="project-lang">Python / Pygame</span>
-            <div class="project-links"><a href="https://github.com/arthurabello/warbound" target="_blank" class="project-link">GitHub ↗</a></div>
-          </div>
-          <h3 data-i18n="proj.war.title">Warbound</h3>
-          <p data-i18n-html="proj.war.desc">A turn-based strategy game inspired by Sun Tzu's <em>The Art of War</em>, built entirely with Pygame. Designed from scratch: game loop, state machine, unit AI, and map rendering. More interesting than it sounds — building a game teaches you more about data modeling than most tutorials.</p>
-          <div class="project-tags">
-            <span class="tag">Game Dev</span><span class="tag">State Machines</span><span class="tag">AI</span><span class="tag">Pygame</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-meta"><span class="project-lang">C++</span></div>
-          <h3 data-i18n="proj.engine.title">SGEngine</h3>
-          <p data-i18n="proj.engine.desc">A game engine built in C++ designed to support a Metroidvania-style game. Covers core engine concerns: rendering loop, entity-component architecture, collision detection, and scene management. Lower-level and more instructive than using an existing engine.</p>
-          <div class="project-tags">
-            <span class="tag">C++</span><span class="tag">Game Engine</span><span class="tag">ECS</span><span class="tag">Systems Programming</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-meta"><span class="project-lang">Python / SQL</span></div>
-          <h3 data-i18n="proj.stone.title">Stone Co. — Business Stability Modelling</h3>
-          <p data-i18n="proj.stone.desc">Exploratory data analysis of SMEs in Maceió's metropolitan area to support Stone's strategic decisions. Developed a 15-year business stability projection model materialised as a geospatial map with GeoPandas — showing resilience clusters and expansion zones. Supervised jointly by FGV, UFAL, and USP.</p>
-          <div class="project-tags">
-            <span class="tag">EDA</span><span class="tag">GeoPandas</span><span class="tag">Predictive Modelling</span><span class="tag">PostgreSQL</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="experience">
-    <div class="container">
-      <p class="section-label fade-up" data-i18n="exp.label">Experience</p>
-      <h2 class="section-title fade-up" data-i18n="exp.title">Where I've worked</h2>
-      <div class="timeline fade-up">
-
-        <div class="timeline-item">
-          <div class="timeline-dot active"></div>
-          <div class="timeline-header">
-            <span class="timeline-role" data-i18n="exp.nes.role">Instructor — Django & Software Engineering</span>
-            <span class="timeline-period">Sep — Dec 2025</span>
-          </div>
-          <div class="timeline-company">NES · Novo Ensino Suplementar · Maceió, Brazil</div>
-          <p class="timeline-desc" data-i18n="exp.nes.desc">Guided students through building the NES institutional website. Delivered a Django course and a software engineering practices workshop covering Git, GitHub, and scalability principles. Collaborated directly with Marcus Fontoura and Eli Cortez, both Technical Fellows at Microsoft Azure.</p>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot active"></div>
-          <div class="timeline-header">
-            <span class="timeline-role" data-i18n="exp.sigma.role">Counselor & Collaborator — SigmaCamp</span>
-            <span class="timeline-period">Jan 2024 — Present</span>
-          </div>
-          <div class="timeline-company">SigmaCamp · Sharon, CT, USA (Volunteer)</div>
-          <p class="timeline-desc" data-i18n-html="exp.sigma.desc">Co-leads teams of 10–12 high-performing STEM students from the US and abroad in an intensive summer program. Teaching Assistant for courses taught by Oxford and MIT professors. Collaborator of an open international STEM competition (<a href="https://sigmacamp.org/pom">Problem of The Month</a>).</p>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot active"></div>
-          <div class="timeline-header">
-            <span class="timeline-role" data-i18n="exp.etapa.role">Counselor & Co-instructor — Fractals & Chaos Theory</span>
-            <span class="timeline-period">Jan 2024 — Present</span>
-          </div>
-          <div class="timeline-company">Etapa SigmaCamp · Valinhos, SP, Brazil (Volunteer)</div>
-          <p class="timeline-desc" data-i18n="exp.etapa.desc">At the Brazilian edition of SigmaCamp, coordinates student groups and co-instructs a Computer Vision course alongside an AI Engineer from Lockheed Martin. Also co-instructs a Fractals & Chaos Theory course alongside a postdoc from Oxford University.</p>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-header">
-            <span class="timeline-role" data-i18n="exp.ta.role">Teaching Assistant — OOP, Data Science, Linear Algebra & Calculus</span>
-            <span class="timeline-period">Jul 2024 — Jul 2025</span>
-          </div>
-          <div class="timeline-company">NES · Novo Ensino Suplementar · Remote</div>
-          <p class="timeline-desc" data-i18n-html="exp.ta.desc">Teaching Assistant for high-level undergraduate courses at an excellence center for mathematics and computer science for intellectually advanced high school students in Brazil (<a href="https://novoensinosuplementar.com">Novo Ensino Suplementar</a>).</p>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-header">
-            <span class="timeline-role" data-i18n="exp.fgv.role">Research Assistant — Data Science & Backend</span>
-            <span class="timeline-period">Oct — Dec 2023</span>
-          </div>
-          <div class="timeline-company">FGV/EMAp · Rio de Janeiro, Brazil</div>
-          <p class="timeline-desc" data-i18n="exp.fgv.desc">Built the data backend of an oncology application for Grupo Hospitalar Conceição. Modelled the PostgreSQL schema, wrote SQL queries for clinical reports, and delivered interactive Power BI dashboards. Versioned with Git.</p>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-header">
-            <span class="timeline-role" data-i18n="exp.stone.role">Data Science Research — Stone Co.</span>
-            <span class="timeline-period">Sep — Oct 2022</span>
-          </div>
-          <div class="timeline-company">ICMC–USP / CeMEAI · São Carlos, SP</div>
-          <p class="timeline-desc" data-i18n="exp.stone.desc">Exploratory analysis of SME data from Maceió's metropolitan area to support Stone's strategic decisions. Developed a 15-year business stability projection model visualised as a geospatial map with GeoPandas, highlighting resilience clusters and expansion zones.</p>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-header">
-            <span class="timeline-role" data-i18n="exp.lojas.role">Data Science Research — Lojas Americanas</span>
-            <span class="timeline-period">Sep — Oct 2022</span>
-          </div>
-          <div class="timeline-company">ICMC–USP / CeMEAI · São Carlos, SP</div>
-          <p class="timeline-desc" data-i18n="exp.lojas.desc">EDA on sales and logistics data across multiple store units. Used SQL and PostgreSQL for data structuring and querying; Python with Pandas and GeoPandas for geospatial analysis; delivered visualisations in Power BI directly to the Lojas Americanas team.</p>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-header">
-            <span class="timeline-role" data-i18n="exp.french.role">Monitor — French Language / DELF B2</span>
-            <span class="timeline-period">Jul — Dec 2022</span>
-          </div>
-          <div class="timeline-company">Aliança Francesa · Maceió, Brazil</div>
-          <p class="timeline-desc" data-i18n="exp.french.desc">Assisted students preparing for the DELF B2 French proficiency certification exam.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="stack">
-    <div class="container">
-      <p class="section-label fade-up" data-i18n="stack.label">Stack</p>
-      <h2 class="section-title fade-up" data-i18n="stack.title">What I work with</h2>
-      <div class="stack-grid stagger">
-        <div class="stack-group">
-          <h4 data-i18n="stack.langs">Languages</h4>
-          <div class="stack-items">
-            <div class="stack-item">Python</div>
-            <div class="stack-item">C / C++</div>
-            <div class="stack-item">SQL</div>
-          </div>
-        </div>
-        <div class="stack-group">
-          <h4 data-i18n="stack.backend">Backend & Infrastructure</h4>
-          <div class="stack-items">
-            <div class="stack-item">Django</div>
-            <div class="stack-item">Flask</div>
-            <div class="stack-item">PostgreSQL</div>
-            <div class="stack-item">Git / GitHub Actions</div>
-          </div>
-        </div>
-        <div class="stack-group">
-          <h4 data-i18n="stack.data">Data & ML</h4>
-          <div class="stack-items">
-            <div class="stack-item">Pandas / NumPy / Matplotlib</div>
-            <div class="stack-item">GeoPandas</div>
-            <div class="stack-item">Scikit-learn</div>
-          </div>
-        </div>
-        <div class="stack-group">
-          <h4 data-i18n="stack.math">Mathematics</h4>
-          <div class="stack-items">
-            <div class="stack-item" data-i18n="stack.math.nla">Numerical Linear Algebra</div>
-            <div class="stack-item" data-i18n="stack.math.prob">Probability & Statistics</div>
-            <div class="stack-item" data-i18n="stack.math.analysis">Real Analysis</div>
-            <div class="stack-item" data-i18n="stack.math.algo">Algorithms & Complexity</div>
-          </div>
-        </div>
-        <div class="stack-group">
-          <h4 data-i18n="stack.soft">Soft Skills</h4>
-          <div class="stack-items">
-            <div class="stack-item" data-i18n="stack.soft.teach">Teaching</div>
-            <div class="stack-item" data-i18n="stack.soft.lead">Team Leadership</div>
-            <div class="stack-item" data-i18n="stack.soft.pm">Project Management</div>
-          </div>
-        </div>
-        <div class="stack-group">
-          <h4 data-i18n="stack.learning">Currently learning</h4>
-          <div class="stack-items">
-            <div class="stack-item">AI Agent Frameworks</div>
-            <div class="stack-item">PydanticAI / FastAPI</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container">
-      <div class="contact-inner">
-        <p class="section-label" data-i18n="contact.label">Let's talk</p>
-        <h2 class="section-title fade-up" style="text-align:center;" data-i18n-html="contact.title">Available for remote work,<br />anywhere in the world.</h2>
-        <p class="contact-subtitle fade-up" data-i18n="contact.subtitle">Whether you need a backend developer, a data engineer, a technical tutor, or just someone who can think clearly about a hard problem — reach out. I respond in English, French, Spanish, Portuguese, or Russian.</p>
-        <div class="contact-links stagger">
-          <a href="mailto:rabello.arthur.oliveira@gmail.com" class="contact-link">
-            <span class="contact-link-icon">✉</span>
-            <span class="contact-link-label" data-i18n="contact.email.label">Email</span>
-            <span class="contact-link-value">rabello.arthur.oliveira</span>
-          </a>
-          <a href="https://linkedin.com/in/arthurabello" target="_blank" class="contact-link">
-            <span class="contact-link-icon">in</span>
-            <span class="contact-link-label">LinkedIn</span>
-            <span class="contact-link-value">arthurabello</span>
-          </a>
-          <a href="https://github.com/arthurabello" target="_blank" class="contact-link">
-            <span class="contact-link-icon">⌥</span>
-            <span class="contact-link-label">GitHub</span>
-            <span class="contact-link-value">arthurabello</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-inner">
-      <span class="footer-copy">© 2026 Arthur Rabello Oliveira</span>
-      <span class="footer-made" data-i18n="footer.made">Built with HTML, CSS, and stubbornness.</span>
-    </div>
-  </footer>
-
-  <script>
-    /* ─────────────────────────────────────────────
-       TRANSLATIONS
-    ───────────────────────────────────────────── */
-    const T = {
-      en: {
-        'nav.about': 'About',
-        'nav.projects': 'Projects',
-        'nav.experience': 'Experience',
-        'nav.stack': 'Stack',
-        'nav.contact': 'Contact',
-        'hero.tag': 'Backend Developer · Linguist · Applied Mathematician · Teacher',
-        'hero.tagline': 'I build things that require thinking, not just typing.<br />Based in Brazil. Working for the world.',
-        'hero.cta.work': 'See my work',
-        'hero.cta.contact': 'Get in touch',
-        'hero.stat.languages': 'Languages spoken',
-        'hero.stat.medals': 'Science olympiad medals',
-        'hero.stat.curiosity': 'Curiosity',
-        'hero.scroll': 'scroll',
-        'about.label': 'About',
-        'about.p1': 'I grew up between 15 countries, absorbing mathematics the way other kids absorb football. My father is a mathematician. Abstraction was never scary — it was just dinner conversation.',
-        'about.p2': 'Before finishing high school, I was already a <strong>research collaborator at the <a href="https://im.ufal.br/laboratorio/led/">Statistics and Data Science Lab (LED–UFAL)</a></strong>, auditing undergraduate math courses, and competing in national olympiads. Not because I had to — because I found it genuinely enjoyable.',
-        'about.p3': 'Today I study <strong><a href="https://emap.fgv.br/">Applied Mathematics at FGV/EMAp</a></strong> (full scholarship), where the curriculum forces you to actually understand things: not just implement gradient descent, but derive it. I implement algorithms from scratch in C and C++. I know what a B-tree is and I\'ve benchmarked one.',
-        'about.p4': 'I want to work with teams that care about correctness, performance, and craft. I\'m available for backend development, data engineering, technical tutoring, or anything at the intersection of math and software.',
-        'about.currently.label': 'Currently',
-        'about.currently.value': 'Applied Mathematics — FGV/EMAp, Rio de Janeiro.<br />Collaborator @ SigmaCamp (Sharon, CT).',
-        'about.languages.label': 'Languages',
-        'about.location.label': 'Location',
-        'about.location.value': 'São Paulo, Brazil — open to remote work worldwide.',
-        'level.native': 'Native', 'level.native2': 'Native',
-        'level.fluent': 'Fluent', 'level.fluent2': 'Fluent',
-        'level.advanced': 'Advanced',
-        'level.beginner': 'Beginner', 'level.beginner2': 'Beginner',
-        'projects.label': 'Projects',
-        'projects.title': 'Things I\'ve actually built',
-        'proj.ii.title': 'Inverted Index',
-        'proj.ii.desc': 'Full implementation of an Inverted Index in C++ — the data structure behind every search engine. The interesting part: a comparative benchmark of three different tree structures (BST, AVL, B-tree) measuring build time, query latency, and memory footprint across corpuses of increasing size. Not just "it works" — but why one is faster than the other under specific conditions.',
-        'proj.knn.title': 'K-Nearest Neighbors — from scratch',
-        'proj.knn.desc': 'KNN implemented in plain C with no ML libraries. The focus was on performance and memory efficiency: manual memory management, cache-aware data layout, and profiling to understand where cycles actually go. A useful exercise in understanding what the abstractions of numpy or sklearn are actually doing underneath.',
-        'proj.hess.title': 'Hessenberg Reduction & Spectral Analysis',
-        'proj.hess.desc': 'Implementation of Hessenberg reduction routines for orthogonal matrices and spectral analysis of the resulting forms — part of a Numerical Linear Algebra course at FGV/EMAp. Applied to understand eigenvalue stability and the numerical behaviour of orthogonal transformations.',
-        'proj.gauss.title': 'Gaussian Matrices & High-Dimensional Chaos',
-        'proj.gauss.desc': 'Exploration of how standard matrix metrics — condition number, spectral radius, singular value distribution — behave as Gaussian random matrices grow in dimension. Reveals the counterintuitive geometry of high-dimensional probability, including concentration of measure phenomena.',
-        'proj.onco.title': 'Oncology Management System',
-        'proj.onco.desc': 'Comprehensive oncological patient management system built for the GHC Clinical Center, developed in collaboration with NES during the FGV Workshop of Mathematical Problems. Modelled the PostgreSQL schema, wrote SQL queries for clinical reports, and delivered interactive Power BI dashboards. The kind of project where correctness actually matters.',
-        'proj.war.title': 'Warbound',
-        'proj.war.desc': 'A turn-based strategy game inspired by Sun Tzu\'s <em>The Art of War</em>, built entirely with Pygame. Designed from scratch: game loop, state machine, unit AI, and map rendering. More interesting than it sounds — building a game teaches you more about data modeling than most tutorials.',
-        'proj.engine.title': 'SGEngine',
-        'proj.engine.desc': 'A game engine built in C++ designed to support a Metroidvania-style game. Covers core engine concerns: rendering loop, entity-component architecture, collision detection, and scene management. Lower-level and more instructive than using an existing engine.',
-        'proj.stone.title': 'Stone Co. — Business Stability Modelling',
-        'proj.stone.desc': 'Exploratory data analysis of SMEs in Maceió\'s metropolitan area to support Stone\'s strategic decisions. Developed a 15-year business stability projection model materialised as a geospatial map with GeoPandas — showing resilience clusters and expansion zones. Supervised jointly by FGV, UFAL, and USP.',
-        'exp.label': 'Experience',
-        'exp.title': 'Where I\'ve worked',
-        'exp.nes.role': 'Instructor — Django & Software Engineering',
-        'exp.nes.desc': 'Guided students through building the NES institutional website. Delivered a Django course and a software engineering practices workshop covering Git, GitHub, and scalability principles. Collaborated directly with Marcus Fontoura and Eli Cortez, both Technical Fellows at Microsoft Azure.',
-        'exp.sigma.role': 'Counselor & Collaborator — SigmaCamp',
-        'exp.sigma.desc': 'Co-leads teams of 10–12 high-performing STEM students from the US and abroad in an intensive summer program. Teaching Assistant for courses taught by Oxford and MIT professors. Collaborator of an open international STEM competition (<a href="https://sigmacamp.org/pom">Problem of The Month</a>).',
-        'exp.etapa.role': 'Counselor & Co-instructor — Fractals & Chaos Theory',
-        'exp.etapa.desc': 'At the Brazilian edition of SigmaCamp, coordinates student groups and co-instructs a Computer Vision course alongside an AI Engineer from Lockheed Martin. Also co-instructs a Fractals & Chaos Theory course alongside a postdoc from Oxford University.',
-        'exp.ta.role': 'Teaching Assistant — OOP, Data Science, Linear Algebra & Calculus',
-        'exp.ta.desc': 'Teaching Assistant for high-level undergraduate courses at an excellence center for mathematics and computer science for intellectually advanced high school students in Brazil (<a href="https://novoensinosuplementar.com">Novo Ensino Suplementar</a>).',
-        'exp.fgv.role': 'Research Assistant — Data Science & Backend',
-        'exp.fgv.desc': 'Built the data backend of an oncology application for Grupo Hospitalar Conceição. Modelled the PostgreSQL schema, wrote SQL queries for clinical reports, and delivered interactive Power BI dashboards. Versioned with Git.',
-        'exp.stone.role': 'Data Science Research — Stone Co.',
-        'exp.stone.desc': 'Exploratory analysis of SME data from Maceió\'s metropolitan area to support Stone\'s strategic decisions. Developed a 15-year business stability projection model visualised as a geospatial map with GeoPandas, highlighting resilience clusters and expansion zones.',
-        'exp.lojas.role': 'Data Science Research — Lojas Americanas',
-        'exp.lojas.desc': 'EDA on sales and logistics data across multiple store units. Used SQL and PostgreSQL for data structuring and querying; Python with Pandas and GeoPandas for geospatial analysis; delivered visualisations in Power BI directly to the Lojas Americanas team.',
-        'exp.french.role': 'Monitor — French Language / DELF B2',
-        'exp.french.desc': 'Assisted students preparing for the DELF B2 French proficiency certification exam.',
-        'stack.label': 'Stack',
-        'stack.title': 'What I work with',
-        'stack.langs': 'Languages',
-        'stack.backend': 'Backend & Infrastructure',
-        'stack.data': 'Data & ML',
-        'stack.math': 'Mathematics',
-        'stack.math.nla': 'Numerical Linear Algebra',
-        'stack.math.prob': 'Probability & Statistics',
-        'stack.math.analysis': 'Real Analysis',
-        'stack.math.algo': 'Algorithms & Complexity',
-        'stack.soft': 'Soft Skills',
-        'stack.soft.teach': 'Teaching',
-        'stack.soft.lead': 'Team Leadership',
-        'stack.soft.pm': 'Project Management',
-        'stack.learning': 'Currently learning',
-        'contact.label': 'Let\'s talk',
-        'contact.title': 'Available for remote work,<br />anywhere in the world.',
-        'contact.subtitle': 'Whether you need a backend developer, a data engineer, a technical tutor, or just someone who can think clearly about a hard problem — reach out. I respond in English, French, Spanish, Portuguese, or Russian.',
-        'contact.email.label': 'Email',
-        'footer.made': 'Built with HTML, CSS, and stubbornness.',
-      },
-
-      pt: {
-        'nav.about': 'Sobre',
-        'nav.projects': 'Projetos',
-        'nav.experience': 'Experiência',
-        'nav.stack': 'Stack',
-        'nav.contact': 'Contato',
-        'hero.tag': 'Desenvolvedor Backend · Linguista · Matemático Aplicado · Professor',
-        'hero.tagline': 'Construo coisas que exigem raciocínio, não apenas digitação.<br />Baseado no Brasil. Trabalhando para o mundo.',
-        'hero.cta.work': 'Ver meu trabalho',
-        'hero.cta.contact': 'Entre em contato',
-        'hero.stat.languages': 'Idiomas falados',
-        'hero.stat.medals': 'Medalhas em olimpíadas',
-        'hero.stat.curiosity': 'Curiosidade',
-        'hero.scroll': 'rolar',
-        'about.label': 'Sobre',
-        'about.p1': 'Cresci entre 15 países, absorvendo matemática da mesma forma que outras crianças absorvem futebol. Meu pai é matemático. Abstração nunca foi assustadora — era apenas conversa de jantar.',
-        'about.p2': 'Antes de terminar o ensino médio, já era <strong>colaborador de pesquisa no <a href="https://im.ufal.br/laboratorio/led/">Laboratório de Estatística e Ciência de Dados (LED–UFAL)</a></strong>, cursando disciplinas de graduação em matemática e competindo em olimpíadas nacionais. Não porque era obrigado — porque achei genuinamente agradável.',
-        'about.p3': 'Hoje estudo <strong><a href="https://emap.fgv.br/">Matemática Aplicada na FGV/EMAp</a></strong> (bolsa integral), onde o currículo te força a realmente entender as coisas: não apenas implementar gradiente descendente, mas derivá-lo. Implemento algoritmos do zero em C e C++. Sei o que é uma B-tree e já fiz benchmarks.',
-        'about.p4': 'Quero trabalhar com equipes que se importam com correção, desempenho e qualidade. Estou disponível para desenvolvimento backend, engenharia de dados, tutoria técnica ou qualquer coisa na interseção entre matemática e software.',
-        'about.currently.label': 'Atualmente',
-        'about.currently.value': 'Matemática Aplicada — FGV/EMAp, Rio de Janeiro.<br />Colaborador @ SigmaCamp (Sharon, CT).',
-        'about.languages.label': 'Idiomas',
-        'about.location.label': 'Localização',
-        'about.location.value': 'São Paulo, Brasil — aberto a trabalho remoto em todo o mundo.',
-        'level.native': 'Nativo', 'level.native2': 'Nativo',
-        'level.fluent': 'Fluente', 'level.fluent2': 'Fluente',
-        'level.advanced': 'Avançado',
-        'level.beginner': 'Iniciante', 'level.beginner2': 'Iniciante',
-        'projects.label': 'Projetos',
-        'projects.title': 'O que eu realmente construí',
-        'proj.ii.title': 'Índice Invertido',
-        'proj.ii.desc': 'Implementação completa de um Índice Invertido em C++ — a estrutura de dados por trás de todo motor de busca. A parte interessante: um benchmark comparativo de três estruturas de árvore (BST, AVL, B-tree) medindo tempo de construção, latência de consulta e uso de memória em corpora de tamanho crescente. Não apenas "funciona" — mas por que uma é mais rápida que a outra em condições específicas.',
-        'proj.knn.title': 'K-Vizinhos Mais Próximos — do zero',
-        'proj.knn.desc': 'KNN implementado em C puro, sem bibliotecas de ML. O foco foi desempenho e eficiência de memória: gerenciamento manual de memória, layout de dados consciente de cache e profiling para entender onde os ciclos realmente vão. Um exercício útil para entender o que as abstrações do numpy ou sklearn realmente fazem por baixo.',
-        'proj.hess.title': 'Redução de Hessenberg e Análise Espectral',
-        'proj.hess.desc': 'Implementação de rotinas de redução à forma de Hessenberg para matrizes ortogonais e análise espectral das formas resultantes — parte de um curso de Álgebra Linear Numérica na FGV/EMAp. Aplicado para entender a estabilidade de autovalores e o comportamento numérico de transformações ortogonais.',
-        'proj.gauss.title': 'Matrizes Gaussianas e Caos de Alta Dimensão',
-        'proj.gauss.desc': 'Exploração de como métricas matriciais padrão — número de condicionamento, raio espectral, distribuição de valores singulares — se comportam à medida que matrizes gaussianas aleatórias crescem em dimensão. Revela a geometria contraintuitiva da probabilidade de alta dimensão, incluindo fenômenos de concentração de medida.',
-        'proj.onco.title': 'Sistema de Gestão Oncológica',
-        'proj.onco.desc': 'Sistema abrangente de gestão de pacientes oncológicos construído para o Centro Clínico GHC, desenvolvido em colaboração com o NES durante o Workshop de Problemas Matemáticos da FGV. Modelou o esquema PostgreSQL, escreveu queries SQL para relatórios clínicos e entregou dashboards interativos no Power BI. O tipo de projeto onde a correção realmente importa.',
-        'proj.war.title': 'Warbound',
-        'proj.war.desc': 'Um jogo de estratégia por turnos inspirado em <em>A Arte da Guerra</em> de Sun Tzu, construído inteiramente com Pygame. Projetado do zero: loop de jogo, máquina de estados, IA de unidades e renderização de mapa. Mais interessante do que parece — construir um jogo ensina mais sobre modelagem de dados do que a maioria dos tutoriais.',
-        'proj.engine.title': 'SGEngine',
-        'proj.engine.desc': 'Uma engine de jogo construída em C++ para suportar um jogo no estilo Metroidvania. Cobre preocupações centrais de engines: loop de renderização, arquitetura entity-component, detecção de colisão e gerenciamento de cenas. Mais de baixo nível e instrutivo do que usar uma engine existente.',
-        'proj.stone.title': 'Stone Co. — Modelagem de Estabilidade de Negócios',
-        'proj.stone.desc': 'Análise exploratória de dados de PMEs da região metropolitana de Maceió para apoiar as decisões estratégicas da Stone. Desenvolveu um modelo de projeção de estabilidade de negócios em horizonte de 15 anos materializado em mapa geoespacial com GeoPandas — evidenciando clusters de resiliência e zonas de expansão. Supervisionado conjuntamente por FGV, UFAL e USP.',
-        'exp.label': 'Experiência',
-        'exp.title': 'Onde trabalhei',
-        'exp.nes.role': 'Instrutor — Django e Engenharia de Software',
-        'exp.nes.desc': 'Orientou alunos no desenvolvimento do site institucional do NES. Ministrou curso de Django e minicurso de boas práticas de engenharia de software cobrindo Git, GitHub e escalabilidade. Colaborou diretamente com Marcus Fontoura e Eli Cortez, ambos Technical Fellows da Microsoft Azure.',
-        'exp.sigma.role': 'Conselheiro e Colaborador — SigmaCamp',
-        'exp.sigma.desc': 'Co-lidera equipes de 10–12 estudantes de alto desempenho dos EUA e outros países em programa intensivo de verão em STEM. Teaching Assistant de cursos ministrados por professores de Oxford e MIT. Colaborador de uma competição internacional aberta (<a href="https://sigmacamp.org/pom">Problem of The Month</a>).',
-        'exp.etapa.role': 'Conselheiro e Co-instrutor — Fractais e Teoria do Caos',
-        'exp.etapa.desc': 'Na edição brasileira do SigmaCamp, coordena grupos de estudantes e é co-instrutor de minicurso em Visão Computacional ao lado de um Engenheiro de IA da Lockheed Martin. Também co-instrui um curso de Fractais e Teoria do Caos ao lado de um pós-doutorando da Universidade de Oxford.',
-        'exp.ta.role': 'Monitor — POO, Ciência de Dados, Álgebra Linear e Cálculo',
-        'exp.ta.desc': 'Monitor de disciplinas de nível superior em um centro de excelência em matemática e computação para alunos de ensino médio intelectualmente avançados no Brasil (<a href="https://novoensinosuplementar.com">Novo Ensino Suplementar</a>).',
-        'exp.fgv.role': 'Assistente de Pesquisa — Ciência de Dados e Backend',
-        'exp.fgv.desc': 'Desenvolveu o backend de dados de uma aplicação oncológica para o Grupo Hospitalar Conceição. Modelou o banco de dados em PostgreSQL, escreveu queries SQL para relatórios clínicos e entregou dashboards interativos no Power BI. Código versionado no Git.',
-        'exp.stone.role': 'Pesquisa em Ciência de Dados — Stone Co.',
-        'exp.stone.desc': 'Análise exploratória de dados de PMEs da região metropolitana de Maceió para apoiar decisões estratégicas da Stone. Desenvolveu modelo de projeção de estabilidade de negócios em 15 anos visualizado em mapa geoespacial com GeoPandas, destacando clusters de resiliência e zonas de expansão.',
-        'exp.lojas.role': 'Pesquisa em Ciência de Dados — Lojas Americanas',
-        'exp.lojas.desc': 'EDA em dados de vendas e logística de diversas unidades da empresa. SQL e PostgreSQL para estruturação e consulta; Python com Pandas e GeoPandas para análise geoespacial; visualizações entregues no Power BI diretamente ao time da Lojas Americanas.',
-        'exp.french.role': 'Monitor — Língua Francesa / DELF B2',
-        'exp.french.desc': 'Auxiliou alunos na preparação para o exame de proficiência em francês DELF B2.',
-        'stack.label': 'Stack',
-        'stack.title': 'Com o que trabalho',
-        'stack.langs': 'Linguagens',
-        'stack.backend': 'Backend e Infraestrutura',
-        'stack.data': 'Dados e ML',
-        'stack.math': 'Matemática',
-        'stack.math.nla': 'Álgebra Linear Numérica',
-        'stack.math.prob': 'Probabilidade e Estatística',
-        'stack.math.analysis': 'Análise Real',
-        'stack.math.algo': 'Algoritmos e Complexidade',
-        'stack.soft': 'Habilidades Interpessoais',
-        'stack.soft.teach': 'Ensino',
-        'stack.soft.lead': 'Liderança de Equipe',
-        'stack.soft.pm': 'Gerenciamento de Projetos',
-        'stack.learning': 'Aprendendo agora',
-        'contact.label': 'Vamos conversar',
-        'contact.title': 'Disponível para trabalho remoto,<br />em qualquer lugar do mundo.',
-        'contact.subtitle': 'Se você precisa de um desenvolvedor backend, engenheiro de dados, tutor técnico, ou apenas alguém que pensa claramente sobre problemas difíceis — entre em contato. Respondo em português, inglês, francês, espanhol ou russo.',
-        'contact.email.label': 'E-mail',
-        'footer.made': 'Construído com HTML, CSS e teimosia.',
-      },
-
-      fr: {
-        'nav.about': 'À propos',
-        'nav.projects': 'Projets',
-        'nav.experience': 'Expérience',
-        'nav.stack': 'Stack',
-        'nav.contact': 'Contact',
-        'hero.tag': 'Développeur Backend · Linguiste · Mathématicien Appliqué · Enseignant',
-        'hero.tagline': 'Je construis des choses qui nécessitent de la réflexion, pas seulement de la frappe.<br />Basé au Brésil. Travaillant pour le monde.',
-        'hero.cta.work': 'Voir mon travail',
-        'hero.cta.contact': 'Me contacter',
-        'hero.stat.languages': 'Langues parlées',
-        'hero.stat.medals': 'Médailles olympiades scientifiques',
-        'hero.stat.curiosity': 'Curiosité',
-        'hero.scroll': 'défiler',
-        'about.label': 'À propos',
-        'about.p1': 'J\'ai grandi entre 15 pays, absorbant les mathématiques comme d\'autres enfants absorbent le football. Mon père est mathématicien. L\'abstraction n\'a jamais été effrayante — c\'était juste une conversation de dîner.',
-        'about.p2': 'Avant de terminer le lycée, j\'étais déjà <strong>collaborateur de recherche au <a href="https://im.ufal.br/laboratorio/led/">Laboratoire de Statistiques et Science des Données (LED–UFAL)</a></strong>, suivant des cours universitaires de mathématiques et participant à des olympiades nationales. Non pas parce que je le devais — mais parce que j\'y trouvais un plaisir sincère.',
-        'about.p3': 'Aujourd\'hui j\'étudie les <strong><a href="https://emap.fgv.br/">Mathématiques Appliquées à FGV/EMAp</a></strong> (bourse complète), où le programme vous oblige à vraiment comprendre les choses : pas seulement implémenter la descente de gradient, mais la dériver. J\'implémente des algorithmes de zéro en C et C++. Je sais ce qu\'est un B-tree et j\'en ai fait des benchmarks.',
-        'about.p4': 'Je veux travailler avec des équipes qui se soucient de la correction, de la performance et de la qualité. Je suis disponible pour le développement backend, l\'ingénierie des données, le tutorat technique, ou tout ce qui se trouve à l\'intersection des mathématiques et du logiciel.',
-        'about.currently.label': 'Actuellement',
-        'about.currently.value': 'Mathématiques Appliquées — FGV/EMAp, Rio de Janeiro.<br />Collaborateur @ SigmaCamp (Sharon, CT).',
-        'about.languages.label': 'Langues',
-        'about.location.label': 'Localisation',
-        'about.location.value': 'São Paulo, Brésil — ouvert au travail à distance partout dans le monde.',
-        'level.native': 'Natif', 'level.native2': 'Natif',
-        'level.fluent': 'Courant', 'level.fluent2': 'Courant',
-        'level.advanced': 'Avancé',
-        'level.beginner': 'Débutant', 'level.beginner2': 'Débutant',
-        'projects.label': 'Projets',
-        'projects.title': 'Ce que j\'ai réellement construit',
-        'proj.ii.title': 'Index Inversé',
-        'proj.ii.desc': 'Implémentation complète d\'un Index Inversé en C++ — la structure de données derrière chaque moteur de recherche. La partie intéressante : un benchmark comparatif de trois structures d\'arbres (BST, AVL, B-tree) mesurant le temps de construction, la latence des requêtes et l\'empreinte mémoire sur des corpus de taille croissante. Pas seulement « ça marche » — mais pourquoi l\'une est plus rapide que l\'autre dans des conditions spécifiques.',
-        'proj.knn.title': 'K Plus Proches Voisins — de zéro',
-        'proj.knn.desc': 'KNN implémenté en C pur sans bibliothèques ML. L\'accent était mis sur la performance et l\'efficacité mémoire : gestion manuelle de la mémoire, disposition des données consciente du cache, et profilage pour comprendre où vont réellement les cycles. Un exercice utile pour comprendre ce que font réellement les abstractions de numpy ou sklearn en dessous.',
-        'proj.hess.title': 'Réduction de Hessenberg et Analyse Spectrale',
-        'proj.hess.desc': 'Implémentation de routines de réduction à la forme de Hessenberg pour les matrices orthogonales et analyse spectrale des formes résultantes — dans le cadre d\'un cours d\'Algèbre Linéaire Numérique à FGV/EMAp. Appliqué pour comprendre la stabilité des valeurs propres et le comportement numérique des transformations orthogonales.',
-        'proj.gauss.title': 'Matrices Gaussiennes et Chaos en Haute Dimension',
-        'proj.gauss.desc': 'Exploration du comportement des métriques matricielles standard — numéro de condition, rayon spectral, distribution des valeurs singulières — à mesure que les matrices aléatoires gaussiennes croissent en dimension. Révèle la géométrie contre-intuitive de la probabilité en haute dimension, y compris les phénomènes de concentration de mesure.',
-        'proj.onco.title': 'Système de Gestion Oncologique',
-        'proj.onco.desc': 'Système complet de gestion des patients oncologiques construit pour le Centre Clinique GHC, développé en collaboration avec NES lors du Workshop de Problèmes Mathématiques de FGV. Modélisation du schéma PostgreSQL, requêtes SQL pour rapports cliniques, et tableaux de bord interactifs Power BI. Le type de projet où la correction a vraiment de l\'importance.',
-        'proj.war.title': 'Warbound',
-        'proj.war.desc': 'Un jeu de stratégie au tour par tour inspiré de <em>L\'Art de la Guerre</em> de Sun Tzu, entièrement construit avec Pygame. Conçu de zéro : boucle de jeu, machine d\'états, IA des unités et rendu de carte. Plus intéressant qu\'il n\'y paraît — construire un jeu vous apprend plus sur la modélisation des données que la plupart des tutoriels.',
-        'proj.engine.title': 'SGEngine',
-        'proj.engine.desc': 'Un moteur de jeu construit en C++ pour supporter un jeu de style Metroidvania. Couvre les préoccupations centrales des moteurs : boucle de rendu, architecture entité-composant, détection de collision et gestion des scènes. Plus bas niveau et plus instructif que d\'utiliser un moteur existant.',
-        'proj.stone.title': 'Stone Co. — Modélisation de la Stabilité des Entreprises',
-        'proj.stone.desc': 'Analyse exploratoire des données de PME de la région métropolitaine de Maceió pour soutenir les décisions stratégiques de Stone. Développé un modèle de projection de stabilité sur 15 ans matérialisé en carte géospatiale avec GeoPandas — montrant les clusters de résilience et les zones d\'expansion. Supervisé conjointement par FGV, UFAL et USP.',
-        'exp.label': 'Expérience',
-        'exp.title': 'Où j\'ai travaillé',
-        'exp.nes.role': 'Instructeur — Django et Génie Logiciel',
-        'exp.nes.desc': 'A guidé les étudiants dans le développement du site institutionnel du NES. A dispensé un cours Django et un atelier de bonnes pratiques de génie logiciel couvrant Git, GitHub et la scalabilité. A collaboré directement avec Marcus Fontoura et Eli Cortez, tous deux Technical Fellows de Microsoft Azure.',
-        'exp.sigma.role': 'Conseiller et Collaborateur — SigmaCamp',
-        'exp.sigma.desc': 'Co-encadre des équipes de 10–12 étudiants de haut niveau des États-Unis et de l\'étranger dans un programme d\'été intensif en STEM. Assistant d\'enseignement pour des cours dispensés par des professeurs d\'Oxford et du MIT. Collaborateur d\'une compétition internationale ouverte (<a href="https://sigmacamp.org/pom">Problem of The Month</a>).',
-        'exp.etapa.role': 'Conseiller et Co-instructeur — Fractales et Théorie du Chaos',
-        'exp.etapa.desc': 'Dans l\'édition brésilienne du SigmaCamp, coordonne des groupes d\'étudiants et co-enseigne un cours de Vision par Ordinateur aux côtés d\'un ingénieur IA de Lockheed Martin. Co-enseigne également un cours sur les Fractales et la Théorie du Chaos avec un post-doctorant de l\'Université d\'Oxford.',
-        'exp.ta.role': 'Assistant d\'Enseignement — POO, Science des Données, Algèbre Linéaire et Calcul',
-        'exp.ta.desc': 'Assistant d\'enseignement pour des cours de niveau universitaire dans un centre d\'excellence en mathématiques et informatique pour lycéens intellectuellement avancés au Brésil (<a href="https://novoensinosuplementar.com">Novo Ensino Suplementar</a>).',
-        'exp.fgv.role': 'Assistant de Recherche — Science des Données et Backend',
-        'exp.fgv.desc': 'A développé le backend de données d\'une application oncologique pour le Grupo Hospitalar Conceição. A modélisé le schéma PostgreSQL, écrit des requêtes SQL pour les rapports cliniques et livré des tableaux de bord Power BI interactifs. Versionné avec Git.',
-        'exp.stone.role': 'Recherche en Science des Données — Stone Co.',
-        'exp.stone.desc': 'Analyse exploratoire des données de PME de la région métropolitaine de Maceió pour soutenir les décisions stratégiques de Stone. Développé un modèle de projection de stabilité sur 15 ans visualisé en carte géospatiale avec GeoPandas, mettant en évidence les clusters de résilience et les zones d\'expansion.',
-        'exp.lojas.role': 'Recherche en Science des Données — Lojas Americanas',
-        'exp.lojas.desc': 'EDA sur les données de ventes et de logistique de plusieurs unités. SQL et PostgreSQL pour la structuration et l\'interrogation des données ; Python avec Pandas et GeoPandas pour l\'analyse géospatiale ; visualisations livrées en Power BI directement à l\'équipe de Lojas Americanas.',
-        'exp.french.role': 'Moniteur — Langue Française / DELF B2',
-        'exp.french.desc': 'A assisté des étudiants dans leur préparation à l\'examen de certification de langue française DELF B2.',
-        'stack.label': 'Stack',
-        'stack.title': 'Ce avec quoi je travaille',
-        'stack.langs': 'Langages',
-        'stack.backend': 'Backend et Infrastructure',
-        'stack.data': 'Données et ML',
-        'stack.math': 'Mathématiques',
-        'stack.math.nla': 'Algèbre Linéaire Numérique',
-        'stack.math.prob': 'Probabilité et Statistiques',
-        'stack.math.analysis': 'Analyse Réelle',
-        'stack.math.algo': 'Algorithmes et Complexité',
-        'stack.soft': 'Compétences Interpersonnelles',
-        'stack.soft.teach': 'Enseignement',
-        'stack.soft.lead': 'Leadership d\'Équipe',
-        'stack.soft.pm': 'Gestion de Projet',
-        'stack.learning': 'En cours d\'apprentissage',
-        'contact.label': 'Parlons-en',
-        'contact.title': 'Disponible pour le travail à distance,<br />partout dans le monde.',
-        'contact.subtitle': 'Que vous ayez besoin d\'un développeur backend, d\'un ingénieur de données, d\'un tuteur technique, ou simplement de quelqu\'un qui pense clairement à un problème difficile — contactez-moi. Je réponds en français, anglais, espagnol, portugais ou russe.',
-        'contact.email.label': 'E-mail',
-        'footer.made': 'Construit avec HTML, CSS et de l\'obstination.',
-      },
-
-      es: {
-        'nav.about': 'Sobre mí',
-        'nav.projects': 'Proyectos',
-        'nav.experience': 'Experiencia',
-        'nav.stack': 'Stack',
-        'nav.contact': 'Contacto',
-        'hero.tag': 'Desarrollador Backend · Lingüista · Matemático Aplicado · Profesor',
-        'hero.tagline': 'Construyo cosas que requieren pensamiento, no solo teclear.<br />Basado en Brasil. Trabajando para el mundo.',
-        'hero.cta.work': 'Ver mi trabajo',
-        'hero.cta.contact': 'Ponerse en contacto',
-        'hero.stat.languages': 'Idiomas hablados',
-        'hero.stat.medals': 'Medallas en olimpiadas científicas',
-        'hero.stat.curiosity': 'Curiosidad',
-        'hero.scroll': 'desplazar',
-        'about.label': 'Sobre mí',
-        'about.p1': 'Crecí entre 15 países, absorbiendo matemáticas de la misma manera que otros niños absorben el fútbol. Mi padre es matemático. La abstracción nunca fue aterradora — era solo conversación en la cena.',
-        'about.p2': 'Antes de terminar el bachillerato, ya era <strong>colaborador de investigación en el <a href="https://im.ufal.br/laboratorio/led/">Laboratorio de Estadística y Ciencia de Datos (LED–UFAL)</a></strong>, cursando materias universitarias de matemáticas y compitiendo en olimpiadas nacionales. No porque tuviera que hacerlo — sino porque lo encontraba genuinamente agradable.',
-        'about.p3': 'Hoy estudio <strong><a href="https://emap.fgv.br/">Matemáticas Aplicadas en FGV/EMAp</a></strong> (beca completa), donde el programa te obliga a entender las cosas de verdad: no solo implementar el descenso de gradiente, sino derivarlo. Implemento algoritmos desde cero en C y C++. Sé lo que es un B-tree y he hecho benchmarks.',
-        'about.p4': 'Quiero trabajar con equipos que se preocupen por la corrección, el rendimiento y la calidad. Estoy disponible para desarrollo backend, ingeniería de datos, tutoría técnica o cualquier cosa en la intersección de matemáticas y software.',
-        'about.currently.label': 'Actualmente',
-        'about.currently.value': 'Matemáticas Aplicadas — FGV/EMAp, Río de Janeiro.<br />Colaborador @ SigmaCamp (Sharon, CT).',
-        'about.languages.label': 'Idiomas',
-        'about.location.label': 'Ubicación',
-        'about.location.value': 'São Paulo, Brasil — abierto a trabajo remoto en todo el mundo.',
-        'level.native': 'Nativo', 'level.native2': 'Nativo',
-        'level.fluent': 'Fluido', 'level.fluent2': 'Fluido',
-        'level.advanced': 'Avanzado',
-        'level.beginner': 'Principiante', 'level.beginner2': 'Principiante',
-        'projects.label': 'Proyectos',
-        'projects.title': 'Lo que realmente he construido',
-        'proj.ii.title': 'Índice Invertido',
-        'proj.ii.desc': 'Implementación completa de un Índice Invertido en C++ — la estructura de datos detrás de todo motor de búsqueda. La parte interesante: un benchmark comparativo de tres estructuras de árbol (BST, AVL, B-tree) midiendo tiempo de construcción, latencia de consulta y uso de memoria en corpus de tamaño creciente. No solo "funciona" — sino por qué una es más rápida que la otra bajo condiciones específicas.',
-        'proj.knn.title': 'K-Vecinos Más Cercanos — desde cero',
-        'proj.knn.desc': 'KNN implementado en C puro sin bibliotecas de ML. El enfoque fue el rendimiento y la eficiencia de memoria: gestión manual de memoria, diseño de datos consciente de caché y perfilado para entender dónde van realmente los ciclos. Un ejercicio útil para entender qué hacen realmente las abstracciones de numpy o sklearn por debajo.',
-        'proj.hess.title': 'Reducción de Hessenberg y Análisis Espectral',
-        'proj.hess.desc': 'Implementación de rutinas de reducción a la forma de Hessenberg para matrices ortogonales y análisis espectral de las formas resultantes — parte de un curso de Álgebra Lineal Numérica en FGV/EMAp. Aplicado para entender la estabilidad de valores propios y el comportamiento numérico de las transformaciones ortogonales.',
-        'proj.gauss.title': 'Matrices Gaussianas y Caos en Alta Dimensión',
-        'proj.gauss.desc': 'Exploración de cómo las métricas matriciales estándar — número de condición, radio espectral, distribución de valores singulares — se comportan a medida que las matrices gaussianas aleatorias crecen en dimensión. Revela la geometría contraintuitiva de la probabilidad en alta dimensión, incluyendo fenómenos de concentración de medida.',
-        'proj.onco.title': 'Sistema de Gestión Oncológica',
-        'proj.onco.desc': 'Sistema integral de gestión de pacientes oncológicos construido para el Centro Clínico GHC, desarrollado en colaboración con NES durante el Workshop de Problemas Matemáticos de FGV. Modeló el esquema PostgreSQL, escribió consultas SQL para informes clínicos y entregó dashboards interactivos en Power BI. El tipo de proyecto donde la corrección realmente importa.',
-        'proj.war.title': 'Warbound',
-        'proj.war.desc': 'Un juego de estrategia por turnos inspirado en <em>El Arte de la Guerra</em> de Sun Tzu, construido completamente con Pygame. Diseñado desde cero: bucle de juego, máquina de estados, IA de unidades y renderizado de mapa. Más interesante de lo que parece — construir un juego te enseña más sobre modelado de datos que la mayoría de los tutoriales.',
-        'proj.engine.title': 'SGEngine',
-        'proj.engine.desc': 'Un motor de juego construido en C++ para soportar un juego estilo Metroidvania. Cubre las preocupaciones centrales de los motores: bucle de renderizado, arquitectura entidad-componente, detección de colisiones y gestión de escenas. Más bajo nivel e instructivo que usar un motor existente.',
-        'proj.stone.title': 'Stone Co. — Modelado de Estabilidad de Negocios',
-        'proj.stone.desc': 'Análisis exploratorio de datos de PYMEs del área metropolitana de Maceió para apoyar las decisiones estratégicas de Stone. Desarrolló un modelo de proyección de estabilidad de negocios a 15 años materializado en un mapa geoespacial con GeoPandas — mostrando clusters de resiliencia y zonas de expansión. Supervisado conjuntamente por FGV, UFAL y USP.',
-        'exp.label': 'Experiencia',
-        'exp.title': 'Dónde he trabajado',
-        'exp.nes.role': 'Instructor — Django e Ingeniería de Software',
-        'exp.nes.desc': 'Guió a los alumnos en el desarrollo del sitio institucional del NES. Impartió un curso de Django y un taller de buenas prácticas de ingeniería de software cubriendo Git, GitHub y escalabilidad. Colaboró directamente con Marcus Fontoura y Eli Cortez, ambos Technical Fellows de Microsoft Azure.',
-        'exp.sigma.role': 'Consejero y Colaborador — SigmaCamp',
-        'exp.sigma.desc': 'Co-lidera equipos de 10–12 estudiantes de alto rendimiento de EE.UU. y otros países en un programa intensivo de verano en STEM. Asistente de enseñanza para cursos impartidos por profesores de Oxford y MIT. Colaborador de una competencia internacional abierta (<a href="https://sigmacamp.org/pom">Problem of The Month</a>).',
-        'exp.etapa.role': 'Consejero y Co-instructor — Fractales y Teoría del Caos',
-        'exp.etapa.desc': 'En la edición brasileña del SigmaCamp, coordina grupos de estudiantes y co-enseña un curso de Visión Computacional junto a un Ingeniero de IA de Lockheed Martin. También co-enseña un curso de Fractales y Teoría del Caos junto a un postdoctorado de la Universidad de Oxford.',
-        'exp.ta.role': 'Asistente de Enseñanza — POO, Ciencia de Datos, Álgebra Lineal y Cálculo',
-        'exp.ta.desc': 'Asistente de enseñanza para cursos de nivel universitario en un centro de excelencia en matemáticas e informática para estudiantes de bachillerato intelectualmente avanzados en Brasil (<a href="https://novoensinosuplementar.com">Novo Ensino Suplementar</a>).',
-        'exp.fgv.role': 'Asistente de Investigación — Ciencia de Datos y Backend',
-        'exp.fgv.desc': 'Desarrolló el backend de datos de una aplicación oncológica para el Grupo Hospitalar Conceição. Modeló el esquema PostgreSQL, escribió consultas SQL para informes clínicos y entregó dashboards interactivos en Power BI. Versionado con Git.',
-        'exp.stone.role': 'Investigación en Ciencia de Datos — Stone Co.',
-        'exp.stone.desc': 'Análisis exploratorio de datos de PYMEs del área metropolitana de Maceió para apoyar decisiones estratégicas de Stone. Desarrolló modelo de proyección de estabilidad a 15 años visualizado en mapa geoespacial con GeoPandas, destacando clusters de resiliencia y zonas de expansión.',
-        'exp.lojas.role': 'Investigación en Ciencia de Datos — Lojas Americanas',
-        'exp.lojas.desc': 'EDA sobre datos de ventas y logística de múltiples unidades. SQL y PostgreSQL para estructuración y consulta de datos; Python con Pandas y GeoPandas para análisis geoespacial; visualizaciones entregadas en Power BI directamente al equipo de Lojas Americanas.',
-        'exp.french.role': 'Monitor — Lengua Francesa / DELF B2',
-        'exp.french.desc': 'Asistió a estudiantes en su preparación para el examen de certificación de lengua francesa DELF B2.',
-        'stack.label': 'Stack',
-        'stack.title': 'Con qué trabajo',
-        'stack.langs': 'Lenguajes',
-        'stack.backend': 'Backend e Infraestructura',
-        'stack.data': 'Datos y ML',
-        'stack.math': 'Matemáticas',
-        'stack.math.nla': 'Álgebra Lineal Numérica',
-        'stack.math.prob': 'Probabilidad y Estadística',
-        'stack.math.analysis': 'Análisis Real',
-        'stack.math.algo': 'Algoritmos y Complejidad',
-        'stack.soft': 'Habilidades Blandas',
-        'stack.soft.teach': 'Enseñanza',
-        'stack.soft.lead': 'Liderazgo de Equipo',
-        'stack.soft.pm': 'Gestión de Proyectos',
-        'stack.learning': 'Actualmente aprendiendo',
-        'contact.label': 'Hablemos',
-        'contact.title': 'Disponible para trabajo remoto,<br />en cualquier parte del mundo.',
-        'contact.subtitle': 'Ya sea que necesites un desarrollador backend, un ingeniero de datos, un tutor técnico, o simplemente alguien que piense claramente sobre un problema difícil — contáctame. Respondo en español, inglés, francés, portugués o ruso.',
-        'contact.email.label': 'Correo',
-        'footer.made': 'Construido con HTML, CSS y terquedad.',
-      },
-
-      ru: {
-        'nav.about': 'Обо мне',
-        'nav.projects': 'Проекты',
-        'nav.experience': 'Опыт',
-        'nav.stack': 'Стек',
-        'nav.contact': 'Контакт',
-        'hero.tag': 'Бэкенд-разработчик · Лингвист · Прикладной математик · Преподаватель',
-        'hero.tagline': 'Я создаю вещи, которые требуют мышления, а не просто печатания.<br />Живу в Бразилии. Работаю для всего мира.',
-        'hero.cta.work': 'Посмотреть работы',
-        'hero.cta.contact': 'Связаться',
-        'hero.stat.languages': 'Языков',
-        'hero.stat.medals': 'Медалей в олимпиадах',
-        'hero.stat.curiosity': 'Любопытство',
-        'hero.scroll': 'прокрутить',
-        'about.label': 'Обо мне',
-        'about.p1': 'Я вырос между 15 странами, впитывая математику так же, как другие дети впитывают футбол. Мой отец — математик. Абстракция никогда не была пугающей — это просто разговор за ужином.',
-        'about.p2': 'Ещё до окончания школы я уже был <strong>научным сотрудником в <a href="https://im.ufal.br/laboratorio/led/">Лаборатории статистики и науки о данных (LED–UFAL)</a></strong>, посещал университетские курсы по математике и участвовал в национальных олимпиадах. Не потому что был обязан — а потому что мне было по-настоящему интересно.',
-        'about.p3': 'Сейчас я изучаю <strong><a href="https://emap.fgv.br/">прикладную математику в FGV/EMAp</a></strong> (полная стипендия), где программа заставляет действительно понимать вещи: не просто реализовывать градиентный спуск, а выводить его. Я реализую алгоритмы с нуля на C и C++. Я знаю, что такое B-дерево, и делал бенчмарки.',
-        'about.p4': 'Хочу работать с командами, которым важны корректность, производительность и качество. Доступен для бэкенд-разработки, инженерии данных, технического наставничества или всего, что находится на пересечении математики и программирования.',
-        'about.currently.label': 'Сейчас',
-        'about.currently.value': 'Прикладная математика — FGV/EMAp, Рио-де-Жанейро.<br />Сотрудник @ SigmaCamp (Шарон, Коннектикут).',
-        'about.languages.label': 'Языки',
-        'about.location.label': 'Местонахождение',
-        'about.location.value': 'Сан-Паулу, Бразилия — открыт для удалённой работы по всему миру.',
-        'level.native': 'Родной', 'level.native2': 'Родной',
-        'level.fluent': 'Свободный', 'level.fluent2': 'Свободный',
-        'level.advanced': 'Продвинутый',
-        'level.beginner': 'Начальный', 'level.beginner2': 'Начальный',
-        'projects.label': 'Проекты',
-        'projects.title': 'То, что я реально построил',
-        'proj.ii.title': 'Инвертированный индекс',
-        'proj.ii.desc': 'Полная реализация инвертированного индекса на C++ — структуры данных, лежащей в основе каждой поисковой системы. Самое интересное: сравнительный бенчмарк трёх древовидных структур (BST, AVL, B-дерево) с измерением времени построения, задержки запросов и объёма памяти на корпусах возрастающего размера. Не просто «работает» — а почему одна быстрее другой в конкретных условиях.',
-        'proj.knn.title': 'Метод k ближайших соседей — с нуля',
-        'proj.knn.desc': 'KNN на чистом C без ML-библиотек. Основной фокус — производительность и эффективность памяти: ручное управление памятью, кэш-ориентированное расположение данных и профилирование для понимания, куда уходят циклы. Полезное упражнение для понимания того, что делают абстракции numpy или sklearn под капотом.',
-        'proj.hess.title': 'Приведение к форме Хессенберга и спектральный анализ',
-        'proj.hess.desc': 'Реализация процедур приведения к форме Хессенберга для ортогональных матриц и спектральный анализ результирующих форм — в рамках курса численной линейной алгебры в FGV/EMAp. Применено для понимания устойчивости собственных значений и численного поведения ортогональных преобразований.',
-        'proj.gauss.title': 'Гауссовы матрицы и хаос высокой размерности',
-        'proj.gauss.desc': 'Исследование поведения стандартных матричных метрик — числа обусловленности, спектрального радиуса, распределения сингулярных значений — при росте размерности случайных гауссовых матриц. Раскрывает контринтуитивную геометрию вероятности высокой размерности, включая явление концентрации меры.',
-        'proj.onco.title': 'Система управления онкологией',
-        'proj.onco.desc': 'Комплексная система управления онкологическими пациентами для клинического центра GHC, разработанная в сотрудничестве с NES на семинаре по математическим задачам FGV. Смоделирована схема PostgreSQL, написаны SQL-запросы для клинических отчётов, созданы интерактивные дашборды Power BI. Проект, где корректность действительно важна.',
-        'proj.war.title': 'Warbound',
-        'proj.war.desc': 'Пошаговая стратегическая игра, вдохновлённая <em>Искусством войны</em> Сунь-Цзы, полностью построенная на Pygame. Разработана с нуля: игровой цикл, машина состояний, ИИ юнитов и рендеринг карты. Интереснее, чем звучит — создание игры учит моделированию данных лучше большинства туториалов.',
-        'proj.engine.title': 'SGEngine',
-        'proj.engine.desc': 'Игровой движок на C++ для поддержки игры в стиле Metroidvania. Охватывает ключевые задачи движков: цикл рендеринга, архитектура сущность-компонент, определение столкновений и управление сценами. Более низкоуровневый и поучительный, чем использование готового движка.',
-        'proj.stone.title': 'Stone Co. — Моделирование устойчивости бизнеса',
-        'proj.stone.desc': 'Разведочный анализ данных МСП из метрополии Масейо для поддержки стратегических решений Stone. Разработана модель прогнозирования устойчивости бизнеса на 15 лет, материализованная в виде геопространственной карты с GeoPandas — с кластерами устойчивости и зонами расширения. Под руководством FGV, UFAL и USP.',
-        'exp.label': 'Опыт',
-        'exp.title': 'Где я работал',
-        'exp.nes.role': 'Преподаватель — Django и инженерия программного обеспечения',
-        'exp.nes.desc': 'Руководил созданием институционального сайта NES. Провёл курс Django и практикум по лучшим практикам разработки ПО: Git, GitHub и масштабируемость. Сотрудничал с Маркусом Фонтурой и Эли Кортесом, обоими Technical Fellows Microsoft Azure.',
-        'exp.sigma.role': 'Советник и сотрудник — SigmaCamp',
-        'exp.sigma.desc': 'Со-руководит командами из 10–12 высокопроизводительных STEM-студентов из США и других стран в интенсивной летней программе. Ассистент преподавателей из Оксфорда и MIT. Сотрудник открытого международного соревнования (<a href="https://sigmacamp.org/pom">Problem of The Month</a>).',
-        'exp.etapa.role': 'Советник и со-преподаватель — Фракталы и теория хаоса',
-        'exp.etapa.desc': 'В бразильском издании SigmaCamp координирует группы студентов и со-преподаёт курс компьютерного зрения вместе с инженером ИИ из Lockheed Martin. Также со-преподаёт курс по фракталам и теории хаоса с постдоком из Оксфорда.',
-        'exp.ta.role': 'Ассистент преподавателя — ООП, наука о данных, линейная алгебра и анализ',
-        'exp.ta.desc': 'Ассистент преподавателя на курсах университетского уровня в центре совершенства по математике и информатике для интеллектуально продвинутых старшеклассников Бразилии (<a href="https://novoensinosuplementar.com">Novo Ensino Suplementar</a>).',
-        'exp.fgv.role': 'Ассистент исследователя — наука о данных и бэкенд',
-        'exp.fgv.desc': 'Разработал бэкенд данных онкологического приложения для Grupo Hospitalar Conceição. Смоделировал схему PostgreSQL, написал SQL-запросы для клинических отчётов и создал интерактивные дашборды Power BI. Версионирование с помощью Git.',
-        'exp.stone.role': 'Исследование данных — Stone Co.',
-        'exp.stone.desc': 'Разведочный анализ данных МСП из метрополии Масейо для поддержки стратегических решений Stone. Разработана модель прогнозирования устойчивости бизнеса на 15 лет в виде геопространственной карты с GeoPandas.',
-        'exp.lojas.role': 'Исследование данных — Lojas Americanas',
-        'exp.lojas.desc': 'EDA по данным продаж и логистики нескольких подразделений. SQL и PostgreSQL для структурирования данных; Python с Pandas и GeoPandas для геопространственного анализа; визуализации в Power BI для команды Lojas Americanas.',
-        'exp.french.role': 'Репетитор — французский язык / DELF B2',
-        'exp.french.desc': 'Помогал студентам готовиться к экзамену по французскому языку DELF B2.',
-        'stack.label': 'Стек',
-        'stack.title': 'С чем я работаю',
-        'stack.langs': 'Языки программирования',
-        'stack.backend': 'Бэкенд и инфраструктура',
-        'stack.data': 'Данные и ML',
-        'stack.math': 'Математика',
-        'stack.math.nla': 'Численная линейная алгебра',
-        'stack.math.prob': 'Теория вероятностей и статистика',
-        'stack.math.analysis': 'Математический анализ',
-        'stack.math.algo': 'Алгоритмы и сложность',
-        'stack.soft': 'Гибкие навыки',
-        'stack.soft.teach': 'Преподавание',
-        'stack.soft.lead': 'Руководство командой',
-        'stack.soft.pm': 'Управление проектами',
-        'stack.learning': 'Изучаю сейчас',
-        'contact.label': 'Давайте поговорим',
-        'contact.title': 'Доступен для удалённой работы<br />в любой точке мира.',
-        'contact.subtitle': 'Нужен бэкенд-разработчик, инженер данных, технический наставник или просто человек, который ясно мыслит о сложных задачах — пишите. Отвечаю на русском, английском, французском, испанском и португальском.',
-        'contact.email.label': 'Почта',
-        'footer.made': 'Собрано из HTML, CSS и упрямства.',
-      },
-
-      de: {
-        'nav.about': 'Über mich',
-        'nav.projects': 'Projekte',
-        'nav.experience': 'Erfahrung',
-        'nav.stack': 'Stack',
-        'nav.contact': 'Kontakt',
-        'hero.tag': 'Backend-Entwickler · Linguist · Angewandter Mathematiker · Lehrer',
-        'hero.tagline': 'Ich baue Dinge, die Denken erfordern, nicht nur Tippen.<br />In Brasilien ansässig. Für die Welt tätig.',
-        'hero.cta.work': 'Meine Arbeit ansehen',
-        'hero.cta.contact': 'Kontakt aufnehmen',
-        'hero.stat.languages': 'Gesprochene Sprachen',
-        'hero.stat.medals': 'Olympiade-Medaillen',
-        'hero.stat.curiosity': 'Neugier',
-        'hero.scroll': 'scrollen',
-        'about.label': 'Über mich',
-        'about.p1': 'Ich bin zwischen 15 Ländern aufgewachsen und habe Mathematik so aufgesogen, wie andere Kinder Fußball aufsaugen. Mein Vater ist Mathematiker. Abstraktion war nie beängstigend — es war einfach Tischgespräch.',
-        'about.p2': 'Noch vor dem Schulabschluss war ich bereits <strong>Forschungsmitarbeiter am <a href="https://im.ufal.br/laboratorio/led/">Labor für Statistik und Datenwissenschaft (LED–UFAL)</a></strong>, belegte Universitätskurse in Mathematik und nahm an nationalen Olympiaden teil. Nicht weil ich musste — sondern weil ich es aufrichtig genoss.',
-        'about.p3': 'Heute studiere ich <strong><a href="https://emap.fgv.br/">Angewandte Mathematik an der FGV/EMAp</a></strong> (Vollstipendium), wo der Lehrplan einen zwingt, Dinge wirklich zu verstehen: nicht nur den Gradientenabstieg zu implementieren, sondern ihn herzuleiten. Ich implementiere Algorithmen von Grund auf in C und C++. Ich weiß, was ein B-Baum ist, und habe Benchmarks durchgeführt.',
-        'about.p4': 'Ich möchte mit Teams arbeiten, denen Korrektheit, Leistung und Qualität wichtig sind. Ich stehe für Backend-Entwicklung, Datentechnik, technisches Tutoring oder alles an der Schnittstelle von Mathematik und Software zur Verfügung.',
-        'about.currently.label': 'Aktuell',
-        'about.currently.value': 'Angewandte Mathematik — FGV/EMAp, Rio de Janeiro.<br />Mitarbeiter @ SigmaCamp (Sharon, CT).',
-        'about.languages.label': 'Sprachen',
-        'about.location.label': 'Standort',
-        'about.location.value': 'São Paulo, Brasilien — offen für Remote-Arbeit weltweit.',
-        'level.native': 'Muttersprache', 'level.native2': 'Muttersprache',
-        'level.fluent': 'Fließend', 'level.fluent2': 'Fließend',
-        'level.advanced': 'Fortgeschritten',
-        'level.beginner': 'Anfänger', 'level.beginner2': 'Anfänger',
-        'projects.label': 'Projekte',
-        'projects.title': 'Was ich wirklich gebaut habe',
-        'proj.ii.title': 'Invertierter Index',
-        'proj.ii.desc': 'Vollständige Implementierung eines Invertierten Index in C++ — die Datenstruktur hinter jeder Suchmaschine. Das Interessante: ein vergleichender Benchmark von drei Baumstrukturen (BST, AVL, B-Baum) mit Messung von Aufbauzeit, Abfragelatenz und Speicherbedarf bei Korpora zunehmender Größe. Nicht nur „es funktioniert" — sondern warum eine unter bestimmten Bedingungen schneller ist.',
-        'proj.knn.title': 'K-Nächste-Nachbarn — von Grund auf',
-        'proj.knn.desc': 'KNN in reinem C ohne ML-Bibliotheken implementiert. Der Fokus lag auf Leistung und Speichereffizienz: manuelle Speicherverwaltung, cache-bewusstes Datenlayout und Profiling, um zu verstehen, wohin die Zyklen tatsächlich gehen. Eine nützliche Übung, um zu verstehen, was die Abstraktionen von numpy oder sklearn wirklich darunter tun.',
-        'proj.hess.title': 'Hessenberg-Reduktion und Spektralanalyse',
-        'proj.hess.desc': 'Implementierung von Hessenberg-Reduktionsroutinen für orthogonale Matrizen und Spektralanalyse der resultierenden Formen — Teil eines Kurses für Numerische Lineare Algebra an der FGV/EMAp. Angewendet, um die Stabilität von Eigenwerten und das numerische Verhalten orthogonaler Transformationen zu verstehen.',
-        'proj.gauss.title': 'Gauß-Matrizen und hochdimensionales Chaos',
-        'proj.gauss.desc': 'Untersuchung, wie sich Standard-Matrixmetriken — Konditionszahl, Spektralradius, Verteilung der Singulärwerte — verhalten, wenn zufällige Gauß-Matrizen in der Dimension wachsen. Enthüllt die kontraintuitive Geometrie hochdimensionaler Wahrscheinlichkeit, einschließlich Maßkonzentrationsphänomene.',
-        'proj.onco.title': 'Onkologie-Managementsystem',
-        'proj.onco.desc': 'Umfassendes Patientenmanagementsystem für das klinische Zentrum GHC, entwickelt in Zusammenarbeit mit NES während des FGV-Workshops für mathematische Probleme. PostgreSQL-Schema modelliert, SQL-Abfragen für klinische Berichte geschrieben, interaktive Power BI-Dashboards geliefert. Das ist die Art Projekt, bei der Korrektheit wirklich wichtig ist.',
-        'proj.war.title': 'Warbound',
-        'proj.war.desc': 'Ein rundenbasiertes Strategiespiel inspiriert von Sun Tzus <em>Die Kunst des Krieges</em>, vollständig mit Pygame entwickelt. Von Grund auf entworfen: Spielschleife, Zustandsmaschine, Einheiten-KI und Kartenrendering. Interessanter als es klingt — ein Spiel zu bauen lehrt mehr über Datenmodellierung als die meisten Tutorials.',
-        'proj.engine.title': 'SGEngine',
-        'proj.engine.desc': 'Eine in C++ gebaute Spiel-Engine für ein Metroidvania-Spiel. Deckt die zentralen Engine-Belange ab: Rendering-Schleife, Entität-Komponenten-Architektur, Kollisionserkennung und Szenenverwaltung. Tiefer gehend und lehrreicher als eine bestehende Engine zu verwenden.',
-        'proj.stone.title': 'Stone Co. — Geschäftsstabilitätsmodellierung',
-        'proj.stone.desc': 'Explorative Datenanalyse von KMUs im Großraum Maceió zur Unterstützung strategischer Entscheidungen von Stone. Entwickelte ein 15-Jahres-Stabilitätsprojektionsmodell als geospatiale Karte mit GeoPandas — mit Resilienz-Clustern und Expansionszonen. Betreut von FGV, UFAL und USP.',
-        'exp.label': 'Erfahrung',
-        'exp.title': 'Wo ich gearbeitet habe',
-        'exp.nes.role': 'Kursleiter — Django und Software Engineering',
-        'exp.nes.desc': 'Begleitete Studierende beim Aufbau der institutionellen NES-Website. Führte einen Django-Kurs und einen Workshop zu Best Practices durch (Git, GitHub, Skalierbarkeit). Arbeitete direkt mit Marcus Fontoura und Eli Cortez zusammen, beide Technical Fellows bei Microsoft Azure.',
-        'exp.sigma.role': 'Berater und Mitarbeiter — SigmaCamp',
-        'exp.sigma.desc': 'Ko-leitet Teams von 10–12 leistungsstarken STEM-Studierenden aus den USA und dem Ausland in einem intensiven Sommerprogramm. Lehrbeauftragter für Kurse von Oxford- und MIT-Professoren. Mitarbeiter eines offenen internationalen Wettbewerbs (<a href="https://sigmacamp.org/pom">Problem of The Month</a>).',
-        'exp.etapa.role': 'Berater und Ko-Kursleiter — Fraktale und Chaostheorie',
-        'exp.etapa.desc': 'Bei der brasilianischen Ausgabe des SigmaCamp koordiniert er Studentengruppen und ko-unterrichtet einen Computer-Vision-Kurs neben einem KI-Ingenieur von Lockheed Martin. Ko-unterrichtet auch einen Kurs über Fraktale und Chaostheorie mit einem Postdoktoranden der Universität Oxford.',
-        'exp.ta.role': 'Lehrassistent — OOP, Data Science, Lineare Algebra und Analysis',
-        'exp.ta.desc': 'Lehrassistent für Kurse auf Universitätsniveau an einem Exzellenzzentrum für Mathematik und Informatik für intellektuell fortgeschrittene Gymnasiasten in Brasilien (<a href="https://novoensinosuplementar.com">Novo Ensino Suplementar</a>).',
-        'exp.fgv.role': 'Forschungsassistent — Data Science und Backend',
-        'exp.fgv.desc': 'Entwickelte das Daten-Backend einer Onkologie-Anwendung für das Grupo Hospitalar Conceição. Modellierte das PostgreSQL-Schema, schrieb SQL-Abfragen für klinische Berichte und lieferte interaktive Power BI-Dashboards. Versioniert mit Git.',
-        'exp.stone.role': 'Data-Science-Forschung — Stone Co.',
-        'exp.stone.desc': 'Explorative Analyse von KMU-Daten aus der Metropolregion Maceió zur Unterstützung strategischer Entscheidungen von Stone. Entwickelte ein 15-Jahres-Stabilitätsprojektionsmodell als geospatiale Karte mit GeoPandas.',
-        'exp.lojas.role': 'Data-Science-Forschung — Lojas Americanas',
-        'exp.lojas.desc': 'EDA zu Verkaufs- und Logistikdaten mehrerer Filialen. SQL und PostgreSQL zur Datenstrukturierung; Python mit Pandas und GeoPandas für räumliche Analysen; Visualisierungen in Power BI direkt für das Lojas-Americanas-Team.',
-        'exp.french.role': 'Tutor — Französische Sprache / DELF B2',
-        'exp.french.desc': 'Unterstützte Studierende bei der Vorbereitung auf das DELF-B2-Sprachzertifikat in Französisch.',
-        'stack.label': 'Stack',
-        'stack.title': 'Womit ich arbeite',
-        'stack.langs': 'Programmiersprachen',
-        'stack.backend': 'Backend & Infrastruktur',
-        'stack.data': 'Daten & ML',
-        'stack.math': 'Mathematik',
-        'stack.math.nla': 'Numerische Lineare Algebra',
-        'stack.math.prob': 'Wahrscheinlichkeit & Statistik',
-        'stack.math.analysis': 'Reelle Analysis',
-        'stack.math.algo': 'Algorithmen & Komplexität',
-        'stack.soft': 'Soft Skills',
-        'stack.soft.teach': 'Unterrichten',
-        'stack.soft.lead': 'Teamführung',
-        'stack.soft.pm': 'Projektmanagement',
-        'stack.learning': 'Derzeit am Lernen',
-        'contact.label': 'Sprechen wir',
-        'contact.title': 'Verfügbar für Remote-Arbeit,<br />überall auf der Welt.',
-        'contact.subtitle': 'Ob Sie einen Backend-Entwickler, einen Data Engineer, einen technischen Tutor oder einfach jemanden brauchen, der klar über ein schwieriges Problem nachdenkt — melden Sie sich. Ich antworte auf Deutsch, Englisch, Französisch, Spanisch, Portugiesisch oder Russisch.',
-        'contact.email.label': 'E-Mail',
-        'footer.made': 'Gebaut mit HTML, CSS und Sturheit.',
-      },
-
-      it: {
-        'nav.about': 'Chi sono',
-        'nav.projects': 'Progetti',
-        'nav.experience': 'Esperienza',
-        'nav.stack': 'Stack',
-        'nav.contact': 'Contatto',
-        'hero.tag': 'Sviluppatore Backend · Linguista · Matematico Applicato · Insegnante',
-        'hero.tagline': 'Costruisco cose che richiedono pensiero, non solo digitazione.<br />Basato in Brasile. Lavorando per il mondo.',
-        'hero.cta.work': 'Vedi il mio lavoro',
-        'hero.cta.contact': 'Contattami',
-        'hero.stat.languages': 'Lingue parlate',
-        'hero.stat.medals': 'Medaglie olimpiadi scientifiche',
-        'hero.stat.curiosity': 'Curiosità',
-        'hero.scroll': 'scorrere',
-        'about.label': 'Chi sono',
-        'about.p1': 'Sono cresciuto tra 15 paesi, assorbendo la matematica come altri bambini assorbono il calcio. Mio padre è matematico. L\'astrazione non è mai stata spaventosa — era solo conversazione a cena.',
-        'about.p2': 'Prima di finire il liceo, ero già <strong>collaboratore di ricerca presso il <a href="https://im.ufal.br/laboratorio/led/">Laboratorio di Statistica e Scienza dei Dati (LED–UFAL)</a></strong>, seguendo corsi universitari di matematica e partecipando a olimpiadi nazionali. Non perché dovevo — ma perché lo trovavo genuinamente piacevole.',
-        'about.p3': 'Oggi studio <strong><a href="https://emap.fgv.br/">Matematica Applicata a FGV/EMAp</a></strong> (borsa di studio completa), dove il programma ti costringe a capire davvero le cose: non solo implementare la discesa del gradiente, ma derivarla. Implemento algoritmi da zero in C e C++. So cosa è un B-tree e ho fatto benchmark.',
-        'about.p4': 'Voglio lavorare con team che si preoccupano di correttezza, prestazioni e qualità. Sono disponibile per sviluppo backend, ingegneria dei dati, tutoraggio tecnico o qualsiasi cosa all\'intersezione tra matematica e software.',
-        'about.currently.label': 'Attualmente',
-        'about.currently.value': 'Matematica Applicata — FGV/EMAp, Rio de Janeiro.<br />Collaboratore @ SigmaCamp (Sharon, CT).',
-        'about.languages.label': 'Lingue',
-        'about.location.label': 'Posizione',
-        'about.location.value': 'São Paulo, Brasile — aperto al lavoro remoto in tutto il mondo.',
-        'level.native': 'Madrelingua', 'level.native2': 'Madrelingua',
-        'level.fluent': 'Corrente', 'level.fluent2': 'Corrente',
-        'level.advanced': 'Avanzato',
-        'level.beginner': 'Principiante', 'level.beginner2': 'Principiante',
-        'projects.label': 'Progetti',
-        'projects.title': 'Ciò che ho realmente costruito',
-        'proj.ii.title': 'Indice Invertito',
-        'proj.ii.desc': 'Implementazione completa di un Indice Invertito in C++ — la struttura dati alla base di ogni motore di ricerca. La parte interessante: un benchmark comparativo di tre strutture ad albero (BST, AVL, B-tree) che misura il tempo di costruzione, la latenza delle query e l\'impronta di memoria su corpus di dimensioni crescenti. Non solo "funziona" — ma perché una è più veloce dell\'altra in condizioni specifiche.',
-        'proj.knn.title': 'K-Nearest Neighbors — da zero',
-        'proj.knn.desc': 'KNN implementato in C puro senza librerie ML. Il focus era su prestazioni ed efficienza della memoria: gestione manuale della memoria, layout dei dati consapevole della cache e profilazione per capire dove vanno davvero i cicli. Un esercizio utile per capire cosa fanno realmente le astrazioni di numpy o sklearn sotto.',
-        'proj.hess.title': 'Riduzione di Hessenberg e Analisi Spettrale',
-        'proj.hess.desc': 'Implementazione di routine di riduzione alla forma di Hessenberg per matrici ortogonali e analisi spettrale delle forme risultanti — parte di un corso di Algebra Lineare Numerica a FGV/EMAp. Applicato per comprendere la stabilità degli autovalori e il comportamento numerico delle trasformazioni ortogonali.',
-        'proj.gauss.title': 'Matrici Gaussiane e Caos ad Alta Dimensione',
-        'proj.gauss.desc': 'Esplorazione di come le metriche matriciali standard — numero di condizionamento, raggio spettrale, distribuzione dei valori singolari — si comportano al crescere della dimensione delle matrici casuali gaussiane. Rivela la geometria controintuitiva della probabilità ad alta dimensione, inclusi i fenomeni di concentrazione della misura.',
-        'proj.onco.title': 'Sistema di Gestione Oncologica',
-        'proj.onco.desc': 'Sistema completo di gestione dei pazienti oncologici costruito per il Centro Clinico GHC, sviluppato in collaborazione con NES durante il Workshop di Problemi Matematici di FGV. Modellato lo schema PostgreSQL, scritte query SQL per report clinici, consegnati dashboard interattivi Power BI. Il tipo di progetto dove la correttezza conta davvero.',
-        'proj.war.title': 'Warbound',
-        'proj.war.desc': 'Un gioco di strategia a turni ispirato a <em>L\'Arte della Guerra</em> di Sun Tzu, costruito interamente con Pygame. Progettato da zero: ciclo di gioco, macchina a stati, IA delle unità e rendering della mappa. Più interessante di quanto sembri — costruire un gioco insegna più sulla modellazione dei dati della maggior parte dei tutorial.',
-        'proj.engine.title': 'SGEngine',
-        'proj.engine.desc': 'Un motore di gioco costruito in C++ per supportare un gioco in stile Metroidvania. Copre le preoccupazioni centrali dei motori: ciclo di rendering, architettura entità-componente, rilevamento delle collisioni e gestione delle scene. Più a basso livello e istruttivo che usare un motore esistente.',
-        'proj.stone.title': 'Stone Co. — Modellazione della Stabilità Aziendale',
-        'proj.stone.desc': 'Analisi esplorativa dei dati delle PMI dell\'area metropolitana di Maceió per supportare le decisioni strategiche di Stone. Sviluppato un modello di proiezione della stabilità aziendale a 15 anni materializzato in una mappa geospaziale con GeoPandas — mostrando cluster di resilienza e zone di espansione. Supervisionato congiuntamente da FGV, UFAL e USP.',
-        'exp.label': 'Esperienza',
-        'exp.title': 'Dove ho lavorato',
-        'exp.nes.role': 'Istruttore — Django e Ingegneria del Software',
-        'exp.nes.desc': 'Ha guidato gli studenti nello sviluppo del sito istituzionale del NES. Ha tenuto un corso Django e un workshop sulle best practice di ingegneria del software (Git, GitHub, scalabilità). Ha collaborato direttamente con Marcus Fontoura ed Eli Cortez, entrambi Technical Fellows di Microsoft Azure.',
-        'exp.sigma.role': 'Consigliere e Collaboratore — SigmaCamp',
-        'exp.sigma.desc': 'Co-guida team di 10–12 studenti STEM ad alto rendimento degli USA e dell\'estero in un programma estivo intensivo. Assistente didattico per corsi tenuti da professori di Oxford e MIT. Collaboratore di una competizione internazionale aperta (<a href="https://sigmacamp.org/pom">Problem of The Month</a>).',
-        'exp.etapa.role': 'Consigliere e Co-istruttore — Frattali e Teoria del Caos',
-        'exp.etapa.desc': 'Nell\'edizione brasiliana del SigmaCamp, coordina gruppi di studenti e co-insegna un corso di Visione Artificiale accanto a un Ingegnere AI di Lockheed Martin. Co-insegna anche un corso su Frattali e Teoria del Caos con un postdoc dell\'Università di Oxford.',
-        'exp.ta.role': 'Assistente Didattico — OOP, Scienza dei Dati, Algebra Lineare e Calcolo',
-        'exp.ta.desc': 'Assistente didattico per corsi di livello universitario in un centro di eccellenza in matematica e informatica per liceali intellettualmente avanzati in Brasile (<a href="https://novoensinosuplementar.com">Novo Ensino Suplementar</a>).',
-        'exp.fgv.role': 'Assistente di Ricerca — Scienza dei Dati e Backend',
-        'exp.fgv.desc': 'Ha sviluppato il backend dei dati di un\'applicazione oncologica per il Grupo Hospitalar Conceição. Modellato lo schema PostgreSQL, scritte query SQL per report clinici, consegnati dashboard Power BI interattivi. Versionato con Git.',
-        'exp.stone.role': 'Ricerca in Scienza dei Dati — Stone Co.',
-        'exp.stone.desc': 'Analisi esplorativa dei dati delle PMI dell\'area metropolitana di Maceió per supportare le decisioni strategiche di Stone. Sviluppato un modello di proiezione della stabilità a 15 anni visualizzato in mappa geospaziale con GeoPandas.',
-        'exp.lojas.role': 'Ricerca in Scienza dei Dati — Lojas Americanas',
-        'exp.lojas.desc': 'EDA su dati di vendite e logistica di diverse unità. SQL e PostgreSQL per strutturazione e query dei dati; Python con Pandas e GeoPandas per analisi geospaziale; visualizzazioni in Power BI consegnate direttamente al team di Lojas Americanas.',
-        'exp.french.role': 'Tutor — Lingua Francese / DELF B2',
-        'exp.french.desc': 'Ha assistito gli studenti nella preparazione all\'esame di certificazione di lingua francese DELF B2.',
-        'stack.label': 'Stack',
-        'stack.title': 'Con cosa lavoro',
-        'stack.langs': 'Linguaggi',
-        'stack.backend': 'Backend e Infrastruttura',
-        'stack.data': 'Dati e ML',
-        'stack.math': 'Matematica',
-        'stack.math.nla': 'Algebra Lineare Numerica',
-        'stack.math.prob': 'Probabilità e Statistica',
-        'stack.math.analysis': 'Analisi Reale',
-        'stack.math.algo': 'Algoritmi e Complessità',
-        'stack.soft': 'Soft Skills',
-        'stack.soft.teach': 'Insegnamento',
-        'stack.soft.lead': 'Leadership del Team',
-        'stack.soft.pm': 'Gestione dei Progetti',
-        'stack.learning': 'Attualmente imparando',
-        'contact.label': 'Parliamo',
-        'contact.title': 'Disponibile per lavoro remoto,<br />ovunque nel mondo.',
-        'contact.subtitle': 'Che tu abbia bisogno di uno sviluppatore backend, un ingegnere dei dati, un tutor tecnico, o semplicemente qualcuno che pensa chiaramente a un problema difficile — contattami. Rispondo in italiano, inglese, francese, spagnolo, portoghese o russo.',
-        'contact.email.label': 'Email',
-        'footer.made': 'Costruito con HTML, CSS e caparbietà.',
-      }
-    };
-
-    const LANG_META = {
-      en: { flag: '🇬🇧', code: 'EN' },
-      pt: { flag: '🇧🇷', code: 'PT' },
-      fr: { flag: '🇫🇷', code: 'FR' },
-      es: { flag: '🇪🇸', code: 'ES' },
-      ru: { flag: '🇷🇺', code: 'RU' },
-      de: { flag: '🇩🇪', code: 'DE' },
-      it: { flag: '🇮🇹', code: 'IT' },
-    };
-
-    function applyLang(lang) {
-      const dict = T[lang];
-      if (!dict) return;
-
-      // Brief fade
-      document.body.style.opacity = '0.85';
-      document.body.style.transition = 'opacity 0.12s ease';
-
-      setTimeout(() => {
-        // Text nodes
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-          const key = el.getAttribute('data-i18n');
-          if (dict[key] !== undefined) el.textContent = dict[key];
-        });
-        // HTML nodes
-        document.querySelectorAll('[data-i18n-html]').forEach(el => {
-          const key = el.getAttribute('data-i18n-html');
-          if (dict[key] !== undefined) el.innerHTML = dict[key];
-        });
-
-        // Update button
-        document.getElementById('lang-btn-flag').textContent = LANG_META[lang].flag;
-        document.getElementById('lang-btn-code').textContent = LANG_META[lang].code;
-
-        // Update active state in dropdown
-        document.querySelectorAll('.lang-option').forEach(btn => {
-          btn.classList.toggle('active', btn.dataset.lang === lang);
-        });
-
-        // html lang attribute
-        document.documentElement.lang = lang;
-
-        localStorage.setItem('ar_lang', lang);
-
-        document.body.style.opacity = '1';
-      }, 120);
-    }
-
-    /* ── Dropdown toggle ── */
-    const toggle = document.getElementById('lang-toggle');
-    const dropdown = document.getElementById('lang-dropdown');
-
-    toggle.addEventListener('click', e => {
-      e.stopPropagation();
-      dropdown.classList.toggle('open');
-    });
-
-    document.addEventListener('click', () => dropdown.classList.remove('open'));
-    dropdown.addEventListener('click', e => e.stopPropagation());
-
-    document.querySelectorAll('.lang-option').forEach(btn => {
-      btn.addEventListener('click', () => {
-        applyLang(btn.dataset.lang);
-        dropdown.classList.remove('open');
-      });
-    });
-
-    // Init from localStorage or default to EN
-    const saved = localStorage.getItem('ar_lang');
-    if (saved && T[saved]) applyLang(saved);
-
-    /* ── Scroll animations ── */
-    const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-    );
-    document.querySelectorAll('.fade-up, .stagger').forEach(el => observer.observe(el));
-    setTimeout(() => {
-      document.querySelectorAll('#hero .stagger').forEach(el => el.classList.add('visible'));
-    }, 400);
-  </script>
-</body>
+            // Start playing on first click anywhere on the page
+            document.addEventListener("click", function tryAutoplay() {
+                setPlaying(true);
+                document.removeEventListener("click", tryAutoplay);
+            });
+        </script>
+    </body>
 </html>
