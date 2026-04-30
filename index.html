@@ -38,7 +38,7 @@
             .bg {
                 position: fixed;
                 inset: 0;
-                background: url("erwin.jpg") center top / cover no-repeat;
+                background: url("images/erwin.jpg") center top / cover no-repeat;
                 opacity: 0.13;
                 pointer-events: none;
                 z-index: 0;
@@ -122,6 +122,7 @@
             .hero {
                 padding: 3rem 0 2rem;
                 border-top: none;
+                scroll-margin-top: 4rem;
             }
             .hero h1 {
                 font-family: Georgia, serif;
@@ -137,6 +138,21 @@
             }
 
             /* ── About ── */
+            .about-wrap {
+                display: flex;
+                gap: 1.5rem;
+                align-items: center;
+            }
+            .about-photo {
+                width: 300px;
+                height: 300px;
+                border-radius: 50%;
+                object-fit: cover;
+                opacity: 0.75;
+                flex-shrink: 0;
+                margin-top: 0.25rem;
+                margin-bottom: 1.0rem;
+            }
             .about p {
                 margin-bottom: 1rem;
             }
@@ -232,28 +248,52 @@
                 border-top: 1px solid #ddd;
             }
 
-            /* ── Music button ── */
-            #sound-btn {
+            /* ── Music controls ── */
+            #music-controls {
                 position: fixed;
                 bottom: 1.5rem;
                 right: 1.5rem;
                 z-index: 20;
-                background: rgba(245, 244, 240, 0.92);
-                border: 1px solid #ccc;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 0.4rem;
+            }
+            #song-select {
+                background: #111;
+                color: #f5f4f0;
+                border: none;
                 border-radius: 999px;
-                padding: 0.35rem 0.85rem;
+                padding: 0.35rem 0.75rem;
                 font-size: 0.78rem;
                 cursor: pointer;
-                color: #444;
-                backdrop-filter: blur(4px);
-                transition:
-                    background 0.15s,
-                    color 0.15s;
                 font-family: inherit;
+                transition: background 0.15s;
+            }
+            #song-select:hover { background: #333; }
+            #sound-btn {
+                background: #111;
+                border: none;
+                border-radius: 50%;
+                width: 3.2rem;
+                height: 3.2rem;
+                cursor: pointer;
+                color: #f5f4f0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background 0.15s, transform 0.1s;
+                align-self: flex-end;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.35);
             }
             #sound-btn:hover {
-                background: #eee;
-                color: #111;
+                background: #333;
+                transform: scale(1.08);
+            }
+            #sound-btn svg {
+                width: 1.3rem;
+                height: 1.3rem;
+                fill: #f5f4f0;
             }
 
             /* ── Responsive ── */
@@ -273,6 +313,10 @@
                 .projects-grid {
                     grid-template-columns: 1fr;
                 }
+                .about-wrap {
+                    flex-direction: column;
+                    align-items: center;
+                }
             }
         </style>
     </head>
@@ -280,7 +324,7 @@
         <div class="bg" aria-hidden="true"></div>
 
         <nav>
-            <span class="nav-name">Arthur Rabello</span>
+            <a href="#top" class="nav-name" style="text-decoration:none;color:inherit;">Arthur Rabello</a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -294,7 +338,7 @@
             <section class="hero" id="top">
                 <h1>Arthur Rabello Oliveira</h1>
                 <p class="hero-sub">
-                    Applied Mathematician &amp; Backend Developer &mdash; São
+                     Computer Scientist &amp; Developer (Back/Front) &mdash; São
                     Paulo, Brazil
                 </p>
             </section>
@@ -302,14 +346,17 @@
             <!-- About -->
             <section id="about">
                 <h2>About</h2>
+                <div class="about-wrap">
+                <img src="images/artu.jpeg" alt="Arthur Rabello" class="about-photo">
                 <div class="about">
                     <p>
-                        I grew up between 15 countries, with scientists as parents. Abstraction was just dinner conversation.
+                        Hello! I am Arthur, i like mathematics, computer science, art (many forms of art), anthropology, and things that sound dangerous. I grew up between 15 countries, talking to people of different cultures and backgrounds, and i've learned a lot about this world and the people who live here.
                     </p>
                     <p>
                         Today I co-found and build <a href="https://nousystems.com.br" target="_blank" rel="noopener">NouSystems</a>, a technology company developing software for Brazilian schools. I studied Applied Mathematics at <a href="https://emap.fgv.br/" target="_blank" rel="noopener">FGV/EMAp</a> on a full scholarship, have been a research collaborator at <a href="https://im.ufal.br/laboratorio/led/" target="_blank" rel="noopener">LED–UFAL</a>, taught university-level courses to advanced high schoolers, and co-instructed programs alongside Oxford and MIT faculty. I speak Portuguese, English, French, Spanish, and Russian.
                     </p>
                     <p>Based in São Paulo.</p>
+                </div>
                 </div>
             </section>
 
@@ -534,7 +581,7 @@
                             I was a TA for the Linear Algebra and Matrices,
                             Object-Oriented Programming, and Fundamentals of
                             Calculus for Optimization courses at NES. It was fun
-                            to put my taching skills to the test with these
+                            to put my teaching skills to the test with these
                             talented young students.
                         </div>
                     </li>
@@ -597,7 +644,8 @@
                             ICMC–USP / CeMEAI · São Carlos, SP · Sep – Oct 2022
                         </div>
                         <div class="exp-desc">
-                            In this USP workshop with Lojas Americanas, we conducted an EDA (Enhanced Data Analysis) on sales and logistics data from different company units. I used SQL and Postgres to structure and query the data, and Python with Pandas and GeoPandas for geospatial analysis. At the end, we presented visualizations in Power BI to the Lojas Americanas team, under the supervision of ICMC-USP, the workshop organizers.
+                            In this USP workshop with Lojas Americanas, we conducted an EDA (Exploratory Data Analysis) on sales and logistics data from different company units. I used SQL and Postgres to structure and query the data, and Python with Pandas and GeoPandas for geospatial analysis. At the end, we presented visualizations in Power BI to the Lojas Americanas team, under the supervision of ICMC-USP, the workshop organizers.
+                        </div>
                     </li>
 
                     <li>
@@ -646,19 +694,33 @@
 
         <footer>&copy; 2026 Arthur Rabello Oliveira</footer>
 
-        <audio id="bgm" src="coolsong.mp3" loop></audio>
-        <button id="sound-btn" aria-label="Toggle music">
-            &#9834; Sound on
-        </button>
+        <audio id="bgm" src="songs/vik.mp3" loop></audio>
+        <div id="music-controls">
+            <select id="song-select" aria-label="Select song">
+                <option value="songs/vik.mp3" selected>Vogel im Käfig - Sawano Hiroyuki</option>
+                <option value="songs/blo.mp3">Before Lights Out - Samuel Kim</option>
+            </select>
+            <button id="sound-btn" aria-label="Play music">
+                <svg id="btn-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+            </button>
+        </div>
 
         <script>
             const bgm = document.getElementById("bgm");
             const btn = document.getElementById("sound-btn");
+            const sel = document.getElementById("song-select");
             let playing = false;
+
+            const icon = document.getElementById("btn-icon");
+            const PLAY  = "M8 5v14l11-7z";
+            const PAUSE = "M6 19h4V5H6v14zm8-14v14h4V5h-4z";
 
             function setPlaying(val) {
                 playing = val;
-                btn.textContent = playing ? "■ Sound off" : "♪ Sound on";
+                icon.querySelector("path").setAttribute("d", playing ? PAUSE : PLAY);
+                btn.setAttribute("aria-label", playing ? "Pause music" : "Play music");
                 if (playing) bgm.play().catch(() => {});
                 else bgm.pause();
             }
@@ -668,10 +730,21 @@
                 setPlaying(!playing);
             });
 
-            // Start playing on first click anywhere on the page
-            document.addEventListener("click", function tryAutoplay() {
-                setPlaying(true);
-                document.removeEventListener("click", tryAutoplay);
+            sel.addEventListener("change", () => {
+                const wasPlaying = playing;
+                bgm.pause();
+                bgm.src = sel.value;
+                bgm.load();
+                if (wasPlaying) bgm.play().catch(() => {});
+                setPlaying(wasPlaying);
+            });
+
+            // Try immediate autoplay; fall back to first click if browser blocks it
+            bgm.play().then(() => { setPlaying(true); }).catch(() => {
+                document.addEventListener("click", function tryAutoplay() {
+                    if (!playing) setPlaying(true);
+                    document.removeEventListener("click", tryAutoplay);
+                });
             });
         </script>
     </body>
